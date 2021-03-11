@@ -11,7 +11,7 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="600.0" minWidth="800.0"
             style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="steakoverflow.Controller_Menu">
+            fx:controller="main.java.steakoverflow.controller.Controller_Menu">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
          <children>
@@ -58,7 +58,7 @@
       <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true"
                  BorderPane.alignment="CENTER">
          <image>
-            <Image url="@logo_hradla.png"/>
+            <Image url="@../images/logo_hradla.png"/>
          </image>
       </ImageView>
    </top>

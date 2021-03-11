@@ -1,4 +1,4 @@
-package steakoverflow;
+package main.java.steakoverflow.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ public class Controller_Menu
 
     public void switchSceneToLevel(ActionEvent event) throws IOException
     {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("level.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/level.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         //This line gets the Stage information
@@ -30,7 +30,7 @@ public class Controller_Menu
 
     public void switchSceneToSettings(ActionEvent event) throws IOException
     {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("settings.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/settings.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         //This line gets the Stage information

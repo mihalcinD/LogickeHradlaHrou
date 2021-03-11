@@ -1,4 +1,4 @@
-package steakoverflow;
+package main.java.steakoverflow.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ public class Controller_Level
 
     public void switchSceneToMenu(ActionEvent event) throws IOException
     {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         //This line gets the Stage information
