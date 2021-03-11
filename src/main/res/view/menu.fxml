@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.DropShadow?>
@@ -9,8 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="600.0" minWidth="800.0"
-            style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
+<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.java.steakoverflow.controller.Controller_Menu">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
@@ -18,12 +19,12 @@
             <Button mnemonicParsing="false" onAction="#switchSceneToLevel" prefHeight="80.0" prefWidth="250.0"
                     style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Hrať"
                     textFill="WHITE">
-               <effect>
-                  <DropShadow/>
-               </effect>
                <cursor>
                   <Cursor fx:constant="HAND"/>
                </cursor>
+               <effect>
+                  <DropShadow/>
+               </effect>
             </Button>
             <Button mnemonicParsing="false" onAction="#switchSceneToSettings" prefHeight="80.0" prefWidth="250.0"
                     style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Nastavenia"
@@ -58,8 +59,11 @@
       <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true"
                  BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../images/logo_hradla.png"/>
+            <Image url="@../images/hradla_hrou_logo.png"/>
          </image>
+         <BorderPane.margin>
+            <Insets bottom="20.0" top="20.0"/>
+         </BorderPane.margin>
       </ImageView>
    </top>
 </BorderPane>
