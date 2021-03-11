@@ -15,9 +15,9 @@
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
          <children>
-            <Button fx:id="switchToLevelBtn" mnemonicParsing="false" onAction="#switchSceneToLevel" prefHeight="80.0"
-                    prefWidth="250.0" style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;"
-                    text="Hrať" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchSceneToLevel" prefHeight="80.0" prefWidth="250.0"
+                    style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Hrať"
+                    textFill="WHITE">
                <effect>
                   <DropShadow/>
                </effect>
@@ -25,9 +25,9 @@
                   <Cursor fx:constant="HAND"/>
                </cursor>
             </Button>
-            <Button fx:id="settingsBtn" mnemonicParsing="false" onAction="#switchSceneToSettings" prefHeight="80.0"
-                    prefWidth="250.0" style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;"
-                    text="Nastavenia" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchSceneToSettings" prefHeight="80.0" prefWidth="250.0"
+                    style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Nastavenia"
+                    textFill="WHITE">
                <font>
                   <Font size="36.0"/>
                </font>
@@ -38,7 +38,7 @@
                   <Cursor fx:constant="HAND"/>
                </cursor>
             </Button>
-            <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#closeApp" prefHeight="80.0" prefWidth="250.0"
+            <Button mnemonicParsing="false" onAction="#closeApp" prefHeight="80.0" prefWidth="250.0"
                     style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Koniec"
                     textFill="WHITE">
                <font>

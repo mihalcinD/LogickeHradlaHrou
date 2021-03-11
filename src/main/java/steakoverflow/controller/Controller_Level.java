@@ -13,9 +13,6 @@ import java.io.IOException;
 
 public class Controller_Level
 {
-    @FXML
-    private Button switchToLevelBtn;
-
     public void switchSceneToMenu(ActionEvent event) throws IOException
     {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
