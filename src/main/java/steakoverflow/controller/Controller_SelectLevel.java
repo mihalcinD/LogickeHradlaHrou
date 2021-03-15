@@ -31,11 +31,13 @@ public class Controller_SelectLevel
         String data = (String) node.getUserData();
         int value = Integer.parseInt(data);
 
-        // button passuje cislo z userdata
-        System.out.println(value);
-
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/level.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../res/view/level.fxml"));
+        Parent root = loader.load();
+        //Get controller of level scene
+        Controller_Level controller_level = loader.getController();
+        //Pass id to another controller
+        controller_level.setId(value);
+        Scene tableViewScene = new Scene(root);
 
         //This line gets the Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

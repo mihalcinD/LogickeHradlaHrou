@@ -8,8 +8,8 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="700.0" minWidth="900.0"
+            style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="main.java.steakoverflow.controller.Controller_Level">
    <bottom>
       <Polygon fill="#69a937" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0" scaleX="0.5" scaleY="0.5"
@@ -32,7 +32,7 @@
                   <DropShadow/>
                </effect>
             </Button>
-            <Text fill="WHITE" layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            <Text fx:id="levelID" fill="WHITE" layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0"
                   style="-fx-font-size: 36px; -fx-font-weight: bold;" text="Level X" wrappingWidth="120.62109375"
                   AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.15234375"/>
          </children>
