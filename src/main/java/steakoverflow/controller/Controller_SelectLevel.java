@@ -34,7 +34,7 @@ public class Controller_SelectLevel
         // button passuje cislo z userdata
         System.out.println(value);
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/level.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         //This line gets the Stage information

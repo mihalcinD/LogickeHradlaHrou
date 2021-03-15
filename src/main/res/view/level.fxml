@@ -5,30 +5,37 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.steakoverflow.controller.Controller_Level">
+<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.java.steakoverflow.controller.Controller_Level">
    <bottom>
-      <Polygon fill="#69a937" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0" scaleX="0.5" scaleY="0.5" scaleZ="0.5" stroke="#69a937" strokeType="INSIDE" BorderPane.alignment="BOTTOM_CENTER" />
+      <Polygon fill="#69a937" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0" scaleX="0.5" scaleY="0.5"
+               scaleZ="0.5" stroke="#69a937" strokeType="INSIDE" BorderPane.alignment="BOTTOM_CENTER"/>
    </bottom>
+   <center>
+      <AnchorPane prefHeight="445.0" prefWidth="900.0" BorderPane.alignment="CENTER"/>
+   </center>
    <top>
-      <Pane prefHeight="72.0" prefWidth="550.0" style="-fx-background-color: #353b4a;" BorderPane.alignment="TOP_CENTER">
+      <AnchorPane prefHeight="77.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="750.0" layoutY="1.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onAction="#switchSceneToMenu" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Menu" textFill="WHITE">
+            <Button alignment="CENTER" layoutX="788.0" layoutY="22.0" minHeight="46.0" minWidth="97.0"
+                    mnemonicParsing="false" onAction="#switchSceneToMenu" prefHeight="46.0" prefWidth="104.0"
+                    style="-fx-background-color: #FF8048; -fx-font-size: 24px; -fx-font-weight: bold;" text="Pause"
+                    textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="HAND"/>
                </cursor>
                <effect>
-                  <DropShadow />
+                  <DropShadow/>
                </effect>
             </Button>
-            <Text fill="WHITE" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 36px; -fx-font-weight: bold;" text="Level X" />
+            <Text fill="WHITE" layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  style="-fx-font-size: 36px; -fx-font-weight: bold;" text="Level X" wrappingWidth="120.62109375"
+                  AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.15234375"/>
          </children>
-      </Pane>
+      </AnchorPane>
    </top>
-   <center>
-      <AnchorPane prefHeight="546.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>
