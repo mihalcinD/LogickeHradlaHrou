@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.json.simple.JSONObject;
 
@@ -71,6 +72,8 @@ public class Controller_SelectLevel
                 Button btn = new Button();
                 btn.setUserData(i + "");
                 btn.setText(i + "");
+                btn.getStyleClass().add("levelBtn");
+                btn.setTextFill(Color.WHITE);
                 btn.setOnAction(event ->
                 {
                     try

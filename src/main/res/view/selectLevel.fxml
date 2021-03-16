@@ -8,7 +8,8 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0"
-            minWidth="900.0" style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
+            minWidth="900.0" style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
+            xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="main.java.steakoverflow.controller.Controller_SelectLevel">
     <bottom>
         <Button mnemonicParsing="false" onAction="#switchSceneToMenu"
@@ -29,29 +30,6 @@
     <center>
         <HBox fx:id="hbox" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0"
               BorderPane.alignment="CENTER">
-            <children>
-                <Button mnemonicParsing="false" onAction="#switchSceneToLevel"
-                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: FF9849;" text="1"
-                        textFill="WHITE" userData="1">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#switchSceneToLevel"
-                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: FF7810;" text="2"
-                        textFill="WHITE" userData="2">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#switchSceneToLevel"
-                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: E46300;" text="3"
-                        textFill="WHITE" userData="3">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                </Button>
-            </children>
             <BorderPane.margin>
                 <Insets top="30.0"/>
             </BorderPane.margin>

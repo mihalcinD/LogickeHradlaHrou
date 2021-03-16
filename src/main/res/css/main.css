@@ -1,0 +1,6 @@
+.levelBtn {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-background-color: #FF9849;
+    -fx-cursor: hand;
+}
