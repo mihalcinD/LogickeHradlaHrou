@@ -37,6 +37,7 @@ public class Controller_SelectLevel
         Controller_Level controller_level = loader.getController();
         //Pass id to another controller
         controller_level.setId(value);
+        controller_level.renderElements();
         Scene tableViewScene = new Scene(root);
 
         //This line gets the Stage information

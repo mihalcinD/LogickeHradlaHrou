@@ -44,42 +44,54 @@ public class Controller_Level
         levelID.setText("Level " + this.id);
     }
 
-    public void initialize()
+    public void renderElements()
     {
         JSONParser parser = new JSONParser();
 
         try
         {
-            Object obj = parser.parse(new FileReader("src\\main\\res\\Logicke_hradla_levels.json"));
+            Object obj = parser.parse(new FileReader("src/main/res/Logicke_hradla_levels.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
-            System.out.println(jsonObject.toString());
 
-            JSONObject level = (JSONObject) jsonObject.get("level1");
-            System.out.println(level);
+            int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
 
-            Object test = (Object) level;
+            JSONObject level = (JSONObject) jsonObject.get("level" + id);
 
-            //Iterator<JSONObject> iterator = level.iterator();
+            for (int i = 1; i < Integer.parseInt(level.get("elementNmb").toString()) + 1; i++)
+            {
+                JSONArray element = (JSONArray) level.get("element" + i);
+                switch (element.get(0).toString())
+                {
+                    case "input":
+                        //code for input
+                        break;
+                    case "output":
+                        //code for output
+                        break;
+                    case "NOT":
+                        //code for NOT
+                        break;
+                    case "AND":
+                        //code for AND
+                        break;
+                    case "NAND":
+                        //code for NAND
+                        break;
+                    case "OR":
+                        //code for OR
+                        break;
+                    case "NOR":
+                        //code for NOR
+                        break;
+                    case "XOR":
+                        //code for XOR
+                        break;
+                }
+
+            }
 
 
-            JSONArray element = (JSONArray) level.get("element1");
-            System.out.println(element);
-
-
-            JSONArray element2 = (JSONArray) level.get("element2");
-            System.out.println(element2.get(0));
-
-
-            // An iterator over a collection. Iterator takes the place of Enumeration in the Java Collections Framework.
-            // Iterators differ from enumerations in two ways:
-            // 1. Iterators allow the caller to remove elements from the underlying collection during the iteration with well-defined semantics.
-            // 2. Method names have been improved.
-
-            //Iterator<JSONObject> iterator = object.iterator();
-            //while (iterator.hasNext()) {
-            //    System.out.println(iterator.next());
-            //}
         }
         catch (Exception e)
         {
