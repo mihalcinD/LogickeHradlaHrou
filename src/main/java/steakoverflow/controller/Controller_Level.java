@@ -50,8 +50,7 @@ public class Controller_Level
 
         try
         {
-            // ../../../res/Logicke_hradla_levels.json
-            Object obj = parser.parse(new FileReader("D:\\Projects\\Programovanie\\Java\\LogickeHradlaHrou\\src\\main\\res\\Logicke_hradla_levels.json"));
+            Object obj = parser.parse(new FileReader("src\\main\\res\\Logicke_hradla_levels.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             System.out.println(jsonObject.toString());

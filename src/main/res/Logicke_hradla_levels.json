@@ -1,5 +1,7 @@
 {
+  "levelNmb": 3,
   "level1": {
+    "elementNmb": 7,
     "element1": [
       "input",
       "200",
@@ -42,6 +44,7 @@
     ]
   },
   "level2": {
+    "elementNmb": 8,
     "element1": [
       "input1",
       "lock",
@@ -89,6 +92,7 @@
     ]
   },
   "level3": {
+    "elementNmb": 8,
     "element1": [
       "input1",
       "lock",
