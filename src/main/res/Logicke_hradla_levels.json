@@ -1,0 +1,138 @@
+{
+  "level1": {
+    "element1": [
+      "input",
+      "200",
+      "200",
+      "true",
+      "true"
+    ],
+    "element2": [
+      "input0",
+      "lock",
+      "135",
+      "70"
+    ],
+    "element3": [
+      "NAND2",
+      "203",
+      "45"
+    ],
+    "element4": [
+      "NOT",
+      "203",
+      "62"
+    ],
+    "element5": [
+      "AND3",
+      "302",
+      "70"
+    ],
+    "element6": [
+      "output0",
+      "unlock",
+      "509",
+      "50"
+    ],
+    "element7": [
+      "output0",
+      "unlock",
+      "509",
+      "70"
+    ]
+  },
+  "level2": {
+    "element1": [
+      "input1",
+      "lock",
+      "135",
+      "50"
+    ],
+    "element2": [
+      "input1",
+      "lock",
+      "135",
+      "70"
+    ],
+    "element3": [
+      "input0",
+      "lock",
+      "135",
+      "90"
+    ],
+    "element4": [
+      "NAND3",
+      "249",
+      "37"
+    ],
+    "element5": [
+      "NOT",
+      "423",
+      "67"
+    ],
+    "element6": [
+      "AND2",
+      "342",
+      "82"
+    ],
+    "element7": [
+      "output1",
+      "unlock",
+      "509",
+      "50"
+    ],
+    "element8": [
+      "output0",
+      "unlock",
+      "509",
+      "70"
+    ]
+  },
+  "level3": {
+    "element1": [
+      "input1",
+      "lock",
+      "135",
+      "50"
+    ],
+    "element2": [
+      "input1",
+      "lock",
+      "135",
+      "70"
+    ],
+    "element3": [
+      "input0",
+      "lock",
+      "135",
+      "90"
+    ],
+    "element4": [
+      "NAND3",
+      "249",
+      "37"
+    ],
+    "element5": [
+      "NOT",
+      "423",
+      "67"
+    ],
+    "element6": [
+      "AND2",
+      "342",
+      "82"
+    ],
+    "element7": [
+      "output1",
+      "unlock",
+      "509",
+      "50"
+    ],
+    "element8": [
+      "output0",
+      "unlock",
+      "509",
+      "70"
+    ]
+  }
+}
