@@ -6,14 +6,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
 
+import main.java.steakoverflow.Input;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -46,16 +50,22 @@ public class Controller_Level
 
     public void renderElements()
     {
+
+        Input in = new Input("input", 500, 500, false, false);
+        playArea.getChildren().add(in.getImg());
+
+
+        System.out.println(playArea.toString());
+
+
         JSONParser parser = new JSONParser();
 
         try
         {
             Object obj = parser.parse(new FileReader("src/main/res/Logicke_hradla_levels.json"));
-
             JSONObject jsonObject = (JSONObject) obj;
 
-            int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
-
+            //int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
             JSONObject level = (JSONObject) jsonObject.get("level" + id);
 
             for (int i = 1; i < Integer.parseInt(level.get("elementNmb").toString()) + 1; i++)
