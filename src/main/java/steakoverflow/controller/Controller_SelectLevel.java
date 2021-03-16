@@ -61,7 +61,7 @@ public class Controller_SelectLevel
         try
         {
             JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("src\\main\\res\\Logicke_hradla_levels.json"));
+            Object obj = parser.parse(new FileReader("src/main/res/Logicke_hradla_levels.json"));
             JSONObject jsonObject = (JSONObject) obj;
 
             int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());

@@ -61,6 +61,7 @@ public class Controller_Level
             for (int i = 1; i < Integer.parseInt(level.get("elementNmb").toString()) + 1; i++)
             {
                 JSONArray element = (JSONArray) level.get("element" + i);
+
                 switch (element.get(0).toString())
                 {
                     case "input":

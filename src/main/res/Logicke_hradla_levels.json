@@ -10,133 +10,155 @@
       "true"
     ],
     "element2": [
-      "input0",
-      "lock",
-      "135",
-      "70"
+      "input",
+      "150",
+      "250",
+      "true",
+      "false"
     ],
     "element3": [
-      "NAND2",
+      "NAND",
       "203",
-      "45"
+      "45",
+      "2"
     ],
     "element4": [
       "NOT",
-      "203",
-      "62"
+      "283",
+      "49",
+      "1"
     ],
     "element5": [
-      "AND3",
-      "302",
-      "70"
+      "AND",
+      "153",
+      "45",
+      "3"
     ],
     "element6": [
-      "output0",
-      "unlock",
-      "509",
-      "50"
+      "output",
+      "200",
+      "200",
+      "false",
+      "false"
     ],
     "element7": [
-      "output0",
-      "unlock",
-      "509",
-      "70"
+      "output",
+      "200",
+      "200",
+      "false",
+      "true"
     ]
   },
   "level2": {
     "elementNmb": 8,
     "element1": [
-      "input1",
-      "lock",
-      "135",
-      "50"
+      "input",
+      "290",
+      "300",
+      "false",
+      "true"
     ],
     "element2": [
-      "input1",
-      "lock",
-      "135",
-      "70"
+      "input",
+      "200",
+      "200",
+      "false",
+      "false"
     ],
     "element3": [
-      "input0",
-      "lock",
+      "input",
       "135",
-      "90"
+      "93",
+      "true",
+      "true"
     ],
     "element4": [
-      "NAND3",
-      "249",
-      "37"
+      "NAND",
+      "203",
+      "45",
+      "3"
     ],
     "element5": [
       "NOT",
-      "423",
-      "67"
+      "382",
+      "98",
+      "1"
     ],
     "element6": [
-      "AND2",
+      "AND",
       "342",
-      "82"
+      "82",
+      "2"
     ],
     "element7": [
-      "output1",
-      "unlock",
-      "509",
-      "50"
+      "output",
+      "500",
+      "260",
+      "false",
+      "true"
     ],
     "element8": [
-      "output0",
-      "unlock",
-      "509",
-      "70"
+      "output",
+      "200",
+      "200",
+      "false",
+      "false"
     ]
   },
   "level3": {
     "elementNmb": 8,
     "element1": [
-      "input1",
-      "lock",
+      "input",
       "135",
-      "50"
+      "93",
+      "true",
+      "true"
     ],
     "element2": [
-      "input1",
-      "lock",
+      "input",
       "135",
-      "70"
+      "93",
+      "true",
+      "false"
     ],
     "element3": [
-      "input0",
-      "lock",
+      "input",
       "135",
-      "90"
+      "93",
+      "false",
+      "false"
     ],
     "element4": [
-      "NAND3",
-      "249",
-      "37"
+      "NAND",
+      "193",
+      "89",
+      "3"
     ],
     "element5": [
       "NOT",
-      "423",
-      "67"
+      "203",
+      "45",
+      "1"
     ],
     "element6": [
-      "AND2",
-      "342",
-      "82"
+      "AND",
+      "145",
+      "78",
+      "2"
     ],
     "element7": [
-      "output1",
-      "unlock",
-      "509",
-      "50"
+      "output",
+      "560",
+      "230",
+      "true",
+      "false"
     ],
     "element8": [
-      "output0",
-      "unlock",
-      "509",
-      "70"
+      "output",
+      "560",
+      "230",
+      "false",
+      "false"
     ]
   }
 }
