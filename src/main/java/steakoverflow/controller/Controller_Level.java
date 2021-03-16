@@ -18,6 +18,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import main.java.steakoverflow.Input;
+import main.java.steakoverflow.Output;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -51,8 +52,19 @@ public class Controller_Level
     public void renderElements()
     {
 
-        Input in = new Input("input", 500, 500, false, false);
-        playArea.getChildren().add(in.getImg());
+        Input in = new Input("input", 20, 20, false, false);
+        Output out = new Output("output", 600, 20, true, true);
+
+        ImageView imageView = in.getImg();
+        imageView.setPreserveRatio(true);
+        imageView.setFitWidth(200);
+
+        ImageView imageView1 = out.getImg();
+        imageView1.setPreserveRatio(true);
+        imageView1.setFitWidth(200);
+
+        playArea.getChildren().add(imageView);
+        playArea.getChildren().add(imageView1);
 
 
         System.out.println(playArea.toString());

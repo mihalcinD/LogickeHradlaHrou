@@ -17,7 +17,20 @@ public class Output extends Entity
         this.value = value;
         try
         {
-            this.img.setImage(new Image(new FileInputStream("src/main/res/images/cacoPog.jpg")));
+            if (value)
+            {
+                if (locked)
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output1_locked.png")));
+                else
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output1_unlocked.png")));
+            }
+            else
+            {
+                if (locked)
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output0_locked.png")));
+                else
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output0_unlocked.png")));
+            }
         }
         catch (FileNotFoundException e)
         {
