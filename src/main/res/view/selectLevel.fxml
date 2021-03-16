@@ -7,9 +7,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="900.0"
-            style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0"
+            minWidth="900.0" style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="main.java.steakoverflow.controller.Controller_SelectLevel">
     <bottom>
         <Button mnemonicParsing="false" onAction="#switchSceneToMenu"
@@ -28,7 +27,8 @@
               text="Levely" BorderPane.alignment="CENTER"/>
     </top>
     <center>
-        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
+        <HBox fx:id="hbox" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0"
+              BorderPane.alignment="CENTER">
             <children>
                 <Button mnemonicParsing="false" onAction="#switchSceneToLevel"
                         style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: FF9849;" text="1"
