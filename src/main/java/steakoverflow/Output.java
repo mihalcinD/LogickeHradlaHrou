@@ -10,7 +10,7 @@ public class Output extends Entity
     private boolean locked;
     private boolean value;
 
-    public Output(String type, double x, double y, boolean locked, boolean value)
+    public Output(String type, int x, int y, boolean locked, boolean value)
     {
         super(type, x, y);
         this.locked = locked;

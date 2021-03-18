@@ -6,23 +6,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileReader;
 import java.io.IOException;
 
+import main.java.steakoverflow.Entity;
 import main.java.steakoverflow.Input;
 import main.java.steakoverflow.Output;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
 public class Controller_Level
@@ -53,20 +48,6 @@ public class Controller_Level
     public void renderElements()
     {
 
-        Input in = new Input("input", 20, 20, false, false);
-        Output out = new Output("output", 600, 20, true, true);
-
-        ImageView imageView = in.getImg();
-        imageView.setPreserveRatio(true);
-        imageView.setFitWidth(200);
-
-        ImageView imageView1 = out.getImg();
-        imageView1.setPreserveRatio(true);
-        imageView1.setFitWidth(200);
-
-        playArea.add(imageView, 0, 0);
-        playArea.add(imageView1, 4, 0);
-
         JSONParser parser = new JSONParser();
 
         try
@@ -81,13 +62,17 @@ public class Controller_Level
             {
                 JSONArray element = (JSONArray) level.get("element" + i);
 
+                Entity entity;
+
                 switch (element.get(0).toString())
                 {
                     case "input":
-                        //code for input
+                        entity = new Input(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
+                        playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
                         break;
                     case "output":
-                        //code for output
+                        entity = new Output(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
+                        playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
                         break;
                     case "NOT":
                         //code for NOT

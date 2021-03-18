@@ -4,47 +4,47 @@
     "elementNmb": 7,
     "element1": [
       "input",
-      "200",
-      "200",
+      "0",
+      "0",
       "true",
       "true"
     ],
     "element2": [
       "input",
-      "150",
-      "250",
+      "0",
+      "1",
       "true",
       "false"
     ],
     "element3": [
       "NAND",
-      "203",
-      "45",
+      "2",
+      "0",
       "2"
     ],
     "element4": [
       "NOT",
-      "283",
-      "49",
+      "2",
+      "1",
       "1"
     ],
     "element5": [
       "AND",
-      "153",
-      "45",
+      "2",
+      "2",
       "3"
     ],
     "element6": [
       "output",
-      "200",
-      "200",
+      "4",
+      "0",
       "false",
       "false"
     ],
     "element7": [
       "output",
-      "200",
-      "200",
+      "4",
+      "1",
       "false",
       "true"
     ]

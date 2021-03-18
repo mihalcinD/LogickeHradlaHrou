@@ -13,11 +13,12 @@ public class Input extends Entity
     private boolean value;
 
 
-    public Input(String type, double x, double y, boolean locked, boolean value)
+    public Input(String type, int x, int y, boolean locked, boolean value)
     {
         super(type, x, y);
         this.locked = locked;
         this.value = value;
+
         try
         {
             if (value)

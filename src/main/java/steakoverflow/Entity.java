@@ -1,24 +1,25 @@
 package main.java.steakoverflow;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Entity
 {
     private String type;
-    private double x;
-    private double y;
+    private int tableX;
+    private int tableY;
     protected ImageView img;
 
-    public Entity(String type, double x, double y)
+    public Entity(String type, int tableX, int tableY)
     {
         this.type = type;
-        this.x = x;
-        this.y = y;
+        this.tableX = tableX;
+        this.tableY = tableY;
 
         this.img = new ImageView();
-        this.img.setX(x);
-        this.img.setY(y);
+        this.img.setPreserveRatio(true);
+        this.img.setFitWidth(150);
+        this.img.setX(tableX);
+        this.img.setY(tableY);
 
     }
 
@@ -32,24 +33,24 @@ public class Entity
         this.type = type;
     }
 
-    public double getX()
+    public int getTableX()
     {
-        return x;
+        return tableX;
     }
 
-    public void setX(double x)
+    public void setTableX(int tableX)
     {
-        this.x = x;
+        this.tableX = tableX;
     }
 
-    public double getY()
+    public int getTableY()
     {
-        return y;
+        return tableY;
     }
 
-    public void setY(double y)
+    public void setTableY(int tableY)
     {
-        this.y = y;
+        this.tableY = tableY;
     }
 
     public ImageView getImg()
