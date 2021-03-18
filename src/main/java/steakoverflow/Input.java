@@ -13,16 +13,13 @@ public class Input extends Entity
     private boolean value;
 
 
-    public Input(String type, int x, int y, boolean locked, boolean value)
-    {
-        super(type, x, y);
+    public Input(int idEntity, String type, int x, int y, boolean locked, boolean value) {
+        super(idEntity, type, x, y);
         this.locked = locked;
         this.value = value;
 
-        try
-        {
-            if (value)
-            {
+        try {
+            if (value) {
                 if (locked)
                     this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_locked.png")));
                 else this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_unlocked.png")));

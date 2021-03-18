@@ -10,15 +10,12 @@ public class Output extends Entity
     private boolean locked;
     private boolean value;
 
-    public Output(String type, int x, int y, boolean locked, boolean value)
-    {
-        super(type, x, y);
+    public Output(int idEntity, String type, int x, int y, boolean locked, boolean value) {
+        super(idEntity, type, x, y);
         this.locked = locked;
         this.value = value;
-        try
-        {
-            if (value)
-            {
+        try {
+            if (value) {
                 if (locked)
                     this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output1_locked.png")));
                 else

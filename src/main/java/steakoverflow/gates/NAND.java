@@ -14,17 +14,13 @@ public class NAND extends Entity
 
     // dedit od AND? a len znegovat
 
-    public NAND(String type, int x, int y, int nmbInput)
-    {
-        super(type, x, y);
+    public NAND(int idEntity, String type, int x, int y, int nmbInput) {
+        super(idEntity, type, x, y);
         this.nmbInput = nmbInput;
 
-        try
-        {
+        try {
             this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/Nand.png")));
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 

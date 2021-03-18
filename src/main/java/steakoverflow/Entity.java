@@ -4,13 +4,14 @@ import javafx.scene.image.ImageView;
 
 public class Entity
 {
+    private int idEntity;
     private String type;
     private int tableX;
     private int tableY;
     protected ImageView img;
 
-    public Entity(String type, int tableX, int tableY)
-    {
+    public Entity(int idEntity, String type, int tableX, int tableY) {
+        this.idEntity = idEntity;
         this.type = type;
         this.tableX = tableX;
         this.tableY = tableY;
@@ -53,13 +54,19 @@ public class Entity
         this.tableY = tableY;
     }
 
-    public ImageView getImg()
-    {
+    public ImageView getImg() {
         return img;
     }
 
-    public void setImg(ImageView img)
-    {
+    public void setImg(ImageView img) {
         this.img = img;
+    }
+
+    public int getIdEntity() {
+        return idEntity;
+    }
+
+    public void setIdEntity(int idEntity) {
+        this.idEntity = idEntity;
     }
 }

@@ -1,17 +1,21 @@
 package main.java.steakoverflow.controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import main.java.steakoverflow.Entity;
 import main.java.steakoverflow.Input;
@@ -21,15 +25,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class Controller_Level
-{
+public class Controller_Level {
 
     public GridPane playArea;
     public Text levelID;
     private int id;
+    private ArrayList<Entity> entities = new ArrayList<>();
+    private ArrayList<Line> cables = new ArrayList<>();
 
-    public void switchSceneToMenu(ActionEvent event) throws IOException
-    {
+    public void switchSceneToMenu(ActionEvent event) throws IOException {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
@@ -50,7 +54,7 @@ public class Controller_Level
     {
 
         JSONParser parser = new JSONParser();
-
+        Line cable = null;
         try
         {
             Object obj = parser.parse(new FileReader("src/main/res/Logicke_hradla_levels.json"));
@@ -65,22 +69,23 @@ public class Controller_Level
 
                 Entity entity = null;
 
+
                 switch (element.get(0).toString())
                 {
                     case "input":
-                        entity = new Input(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
+                        entity = new Input(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
                         break;
                     case "output":
-                        entity = new Output(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
+                        entity = new Output(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
                         break;
                     case "NOT":
-                        entity = new NOT(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
+                        entity = new NOT(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
                         break;
                     case "AND":
-                        entity = new AND(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
+                        entity = new AND(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
                         break;
                     case "NAND":
-                        entity = new NAND(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
+                        entity = new NAND(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
                         break;
                     case "OR":
                         //code for OR
@@ -93,10 +98,18 @@ public class Controller_Level
                         break;
                 }
 
-                if (entity != null) playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
+                if (entity != null) {
+                    playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
+                    System.out.println(entity.getType() + ": " + entity.getIdEntity());
+                    entities.add(entity);
+                }
+
 
             }
 
+            Bounds boundsInScene = entities.get(6).getImg().localToScene(entities.get(6).getImg().getBoundsInLocal());
+            System.out.println(boundsInScene.getMaxX());
+            System.out.println(boundsInScene.getMaxY());
 
         }
         catch (Exception e)

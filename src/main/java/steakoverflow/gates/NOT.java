@@ -13,17 +13,13 @@ public class NOT extends Entity
     private boolean outputValue;
 
 
-    public NOT(String type, int x, int y, int nmbInput)
-    {
-        super(type, x, y);
+    public NOT(int idEntity, String type, int x, int y, int nmbInput) {
+        super(idEntity, type, x, y);
         this.nmbInput = nmbInput;
 
-        try
-        {
+        try {
             this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/Not.png")));
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
