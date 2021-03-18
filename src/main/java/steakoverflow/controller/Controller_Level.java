@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
@@ -27,7 +28,7 @@ import org.json.simple.parser.JSONParser;
 public class Controller_Level
 {
 
-    public AnchorPane playArea;
+    public GridPane playArea;
     public Text levelID;
     private int id;
 
@@ -63,12 +64,8 @@ public class Controller_Level
         imageView1.setPreserveRatio(true);
         imageView1.setFitWidth(200);
 
-        playArea.getChildren().add(imageView);
-        playArea.getChildren().add(imageView1);
-
-
-        System.out.println(playArea.toString());
-
+        playArea.add(imageView, 0, 0);
+        playArea.add(imageView1, 4, 0);
 
         JSONParser parser = new JSONParser();
 
