@@ -16,6 +16,7 @@ import java.io.IOException;
 import main.java.steakoverflow.Entity;
 import main.java.steakoverflow.Input;
 import main.java.steakoverflow.Output;
+import main.java.steakoverflow.gates.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -62,26 +63,24 @@ public class Controller_Level
             {
                 JSONArray element = (JSONArray) level.get("element" + i);
 
-                Entity entity;
+                Entity entity = null;
 
                 switch (element.get(0).toString())
                 {
                     case "input":
                         entity = new Input(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
-                        playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
                         break;
                     case "output":
                         entity = new Output(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
-                        playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
                         break;
                     case "NOT":
-                        //code for NOT
+                        entity = new NOT(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
                         break;
                     case "AND":
-                        //code for AND
+                        entity = new AND(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
                         break;
                     case "NAND":
-                        //code for NAND
+                        entity = new NAND(element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()));
                         break;
                     case "OR":
                         //code for OR
@@ -93,6 +92,8 @@ public class Controller_Level
                         //code for XOR
                         break;
                 }
+
+                if (entity != null) playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
 
             }
 
