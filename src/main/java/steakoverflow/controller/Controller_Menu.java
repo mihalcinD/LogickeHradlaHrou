@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import main.java.steakoverflow.Main;
 
 import java.io.IOException;
 
@@ -20,7 +21,6 @@ public class Controller_Menu
 
         //This line gets the Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         window.setScene(tableViewScene);
         window.show();
     }

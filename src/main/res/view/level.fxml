@@ -8,15 +8,15 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="700.0" minWidth="900.0"
-            style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
+<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.java.steakoverflow.controller.Controller_Level">
     <bottom>
         <Polygon fill="#69a937" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0" scaleX="0.5" scaleY="0.5"
                  scaleZ="0.5" stroke="#69a937" strokeType="INSIDE" BorderPane.alignment="BOTTOM_CENTER"/>
     </bottom>
     <top>
-        <AnchorPane prefHeight="77.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+        <AnchorPane BorderPane.alignment="CENTER">
             <children>
                 <Button alignment="CENTER" layoutX="788.0" layoutY="22.0" minHeight="46.0" minWidth="97.0"
                         mnemonicParsing="false" onAction="#switchSceneToMenu" prefHeight="46.0" prefWidth="104.0"

@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="700.0" minWidth="900.0"
-            style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
+<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.java.steakoverflow.controller.Controller_Settings">
     <top>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 48; -fx-font-weight: bold;"
@@ -21,8 +21,7 @@
             <children>
                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
                       style="-fx-font-size: 36; -fx-font-weight: bold;" text="Rozlíšenie"/>
-                <ComboBox fx:id="comboBox" onAction="#updateSettings" prefWidth="150.0" promptText="900x800"
-                          style="-fx-background-color: red;"/>
+                <ComboBox fx:id="comboBox" onAction="#updateSettings" prefWidth="150.0" promptText="900x800"/>
             </children>
             <BorderPane.margin>
                 <Insets top="40.0"/>

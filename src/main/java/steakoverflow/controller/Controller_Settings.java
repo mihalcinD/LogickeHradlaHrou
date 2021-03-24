@@ -26,10 +26,8 @@ public class Controller_Settings
     {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
-
         //This line gets the Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         window.setScene(tableViewScene);
         window.show();
     }
@@ -40,10 +38,8 @@ public class Controller_Settings
         Main.width = Integer.parseInt(resolution[0]);
         Main.height = Integer.parseInt(resolution[1]);
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setWidth(Main.width);
-        window.setHeight(Main.height);
-        window.show();
+        System.out.println(Main.width);
+        System.out.println(Main.height);
     }
 
     public void saveSettings()
@@ -64,7 +60,7 @@ public class Controller_Settings
 
     public void initialize()
     {
-        ObservableList<String> options = FXCollections.observableArrayList("800x600", "1200x1600", "1980x1080");
+        ObservableList<String> options = FXCollections.observableArrayList("900x700", "1280x720", "1920x1080");
         comboBox.setItems(options);
         comboBox.setValue(Main.width + "x" + Main.height);
 
