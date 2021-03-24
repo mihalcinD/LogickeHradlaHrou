@@ -2,12 +2,15 @@ package main.java.steakoverflow.controller;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -27,6 +30,7 @@ import org.json.simple.parser.JSONParser;
 
 public class Controller_Level {
 
+    public AnchorPane div;
     public GridPane playArea;
     public Text levelID;
     private int id;
@@ -101,18 +105,37 @@ public class Controller_Level {
                         break;
                 }
 
-                if (entity != null) {
+                if (entity != null)
+                {
                     playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
                     System.out.println(entity.getType() + ": " + entity.getIdEntity());
                     entities.add(entity);
                 }
 
+                EventHandler<MouseEvent> cursorChangeHandler = new EventHandler<MouseEvent>()
+                {
+                    @Override
+                    public void handle(MouseEvent e)
+                    {
+//                        System.out.println(e.getX() + " " + e.getY());
+                    }
+                };
+
+                div.addEventFilter(MouseEvent.MOUSE_MOVED, cursorChangeHandler);
+
+//                Bounds boundsInScene = entity.getImg().getBoundsInParent();
+//                System.out.println(boundsInScene.getMaxX());
+//                System.out.println(boundsInScene.getMaxY());
+
 
             }
 
-            Bounds boundsInScene = entities.get(6).getImg().localToScene(entities.get(6).getImg().getBoundsInLocal());
-            System.out.println(boundsInScene.getMaxX());
-            System.out.println(boundsInScene.getMaxY());
+            Node node = playArea.getChildren().get(4);
+            System.out.println("Size: " + playArea.getChildren().size());
+            Bounds boundsInScene = node.localToScene(node.getBoundsInLocal());
+            System.out.println("X: " + boundsInScene.getMinX() + ",Y: " + boundsInScene.getMinY());
+            //Bounds boundsInScene = entities.get(6).getImg().localToScreen(entities.get(6).getImg().getBoundsInLocal());
+
 
         }
         catch (Exception e)
@@ -121,4 +144,20 @@ public class Controller_Level {
         }
     }
 
+    public Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane)
+    {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+
+        for (Node node : childrens)
+        {
+            if (gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column)
+            {
+                result = node;
+                break;
+            }
+        }
+
+        return result;
+    }
 }

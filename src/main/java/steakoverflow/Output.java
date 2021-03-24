@@ -14,25 +14,7 @@ public class Output extends Entity
         super(idEntity, type, x, y);
         this.locked = locked;
         this.value = value;
-        try {
-            if (value) {
-                if (locked)
-                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output1_locked.png")));
-                else
-                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output1_unlocked.png")));
-            }
-            else
-            {
-                if (locked)
-                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output0_locked.png")));
-                else
-                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output0_unlocked.png")));
-            }
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
+        changeImg();
     }
 
     public boolean isLocked()
@@ -54,4 +36,42 @@ public class Output extends Entity
     {
         this.value = value;
     }
+
+    public void clicked()
+    {
+        if (!this.locked)
+        {
+            this.value = !this.value;
+            changeImg();
+        }
+    }
+
+    private void changeImg()
+    {
+        try
+        {
+            if (value)
+            {
+                if (locked)
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output1_locked.png")));
+                else
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output1_unlocked.png")));
+            }
+            else
+            {
+                if (locked)
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output0_locked.png")));
+                else
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/output/output0_unlocked.png")));
+            }
+            this.img.setOnMouseClicked(mouseEvent -> clicked());
+
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -2,8 +2,6 @@ package main.java.steakoverflow;
 
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -17,25 +15,7 @@ public class Input extends Entity
         super(idEntity, type, x, y);
         this.locked = locked;
         this.value = value;
-
-        try {
-            if (value) {
-                if (locked)
-                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_locked.png")));
-                else this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_unlocked.png")));
-            }
-            else
-            {
-                if (locked)
-                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input0_locked.png")));
-                else this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input0_unlocked.png")));
-            }
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
+        changeImg();
     }
 
     public boolean isLocked()
@@ -57,4 +37,40 @@ public class Input extends Entity
     {
         this.value = value;
     }
+
+    public void clicked()
+    {
+        if (!this.locked)
+        {
+            this.value = !this.value;
+            changeImg();
+        }
+    }
+
+    private void changeImg()
+    {
+        try
+        {
+            if (value)
+            {
+                if (locked)
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_locked.png")));
+                else this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_unlocked.png")));
+            }
+            else
+            {
+                if (locked)
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input0_locked.png")));
+                else this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input0_unlocked.png")));
+            }
+
+            this.img.setOnMouseClicked(mouseEvent -> clicked());
+
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 }
