@@ -4,12 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 public class Main extends Application
 {
@@ -26,6 +25,7 @@ public class Main extends Application
         loadSettings();
         Parent root = FXMLLoader.load(getClass().getResource("../../res/view/menu.fxml"));
         primaryStage.setTitle("Logické hradlá hrou");
+        primaryStage.getIcons().add(new Image("file:src/main/res/images/Hradla_hrou_icon.png"));
         primaryStage.setScene(new Scene(root, width, height));
         primaryStage.setResizable(false);
         primaryStage.show();
