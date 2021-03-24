@@ -1,5 +1,7 @@
 package main.java.steakoverflow.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +42,6 @@ public class Controller_Level {
 
         //This line gets the Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         window.setScene(tableViewScene);
         window.show();
     }
@@ -49,7 +50,6 @@ public class Controller_Level {
     {
         this.id = id;
         levelID.setText("Level " + this.id);
-        System.out.println(playArea.getWidth());
     }
 
     public void renderElements()
@@ -105,6 +105,7 @@ public class Controller_Level {
 
                 if (entity != null)
                 {
+
                     playArea.getChildren().add(entity.getImg());
                     generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), 50.0, 50); //malo by vygenerovat presne v strede AnchorPanu
                     System.out.println(playArea.getWidth());

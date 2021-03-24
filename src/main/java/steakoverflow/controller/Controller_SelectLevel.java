@@ -1,5 +1,6 @@
 package main.java.steakoverflow.controller;
 
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,14 +48,18 @@ public class Controller_SelectLevel
         Controller_Level controller_level = loader.getController();
         //Pass id to another controller
         controller_level.setId(value);
-        controller_level.renderElements();
         Scene tableViewScene = new Scene(root);
-
         //This line gets the Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //príprava na prípadnu responzivitu realtime
+      /*  ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue) ->
+                System.out.println("Height: " + window.getHeight() + " Width: " + window.getWidth());
 
+        window.widthProperty().addListener(stageSizeListener);
+        window.heightProperty().addListener(stageSizeListener);*/
         window.setScene(tableViewScene);
         window.show();
+        controller_level.renderElements();
     }
 
     public void initialize()

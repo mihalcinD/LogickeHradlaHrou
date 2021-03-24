@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0"
-            minWidth="900.0" style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
-            xmlns="http://javafx.com/javafx/11.0.1"
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="900.0"
+            style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.java.steakoverflow.controller.Controller_SelectLevel">
     <bottom>
         <Button mnemonicParsing="false" onAction="#switchSceneToMenu"
@@ -24,7 +24,7 @@
         </Button>
     </bottom>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 36; -fx-font-weight: bold;"
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 48; -fx-font-weight: bold;"
               text="Levely" BorderPane.alignment="CENTER"/>
     </top>
     <center>
