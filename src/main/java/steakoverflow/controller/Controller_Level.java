@@ -2,16 +2,14 @@ package main.java.steakoverflow.controller;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
+
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -30,8 +28,7 @@ import org.json.simple.parser.JSONParser;
 
 public class Controller_Level {
 
-    public AnchorPane div;
-    public GridPane playArea;
+    public AnchorPane playArea;
     public Text levelID;
     private int id;
     private ArrayList<Entity> entities = new ArrayList<>();
@@ -52,6 +49,7 @@ public class Controller_Level {
     {
         this.id = id;
         levelID.setText("Level " + this.id);
+        System.out.println(playArea.getWidth());
     }
 
     public void renderElements()
@@ -107,34 +105,15 @@ public class Controller_Level {
 
                 if (entity != null)
                 {
-                    playArea.add(entity.getImg(), entity.getTableX(), entity.getTableY());
-                    System.out.println(entity.getType() + ": " + entity.getIdEntity());
+                    playArea.getChildren().add(entity.getImg());
+                    generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), 50.0, 50); //malo by vygenerovat presne v strede AnchorPanu
+                    System.out.println(playArea.getWidth());
+                    System.out.println(playArea.getHeight());
                     entities.add(entity);
                 }
 
-                EventHandler<MouseEvent> cursorChangeHandler = new EventHandler<MouseEvent>()
-                {
-                    @Override
-                    public void handle(MouseEvent e)
-                    {
-//                        System.out.println(e.getX() + " " + e.getY());
-                    }
-                };
-
-                div.addEventFilter(MouseEvent.MOUSE_MOVED, cursorChangeHandler);
-
-//                Bounds boundsInScene = entity.getImg().getBoundsInParent();
-//                System.out.println(boundsInScene.getMaxX());
-//                System.out.println(boundsInScene.getMaxY());
-
 
             }
-
-            Node node = playArea.getChildren().get(4);
-            System.out.println("Size: " + playArea.getChildren().size());
-            Bounds boundsInScene = node.localToScene(node.getBoundsInLocal());
-            System.out.println("X: " + boundsInScene.getMinX() + ",Y: " + boundsInScene.getMinY());
-            //Bounds boundsInScene = entities.get(6).getImg().localToScreen(entities.get(6).getImg().getBoundsInLocal());
 
 
         }
@@ -144,20 +123,11 @@ public class Controller_Level {
         }
     }
 
-    public Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane)
+    private void generateElementToPlayArea(double width, double height, Node element, double percentageFromLeft, double percentageFromTop)
     {
-        Node result = null;
-        ObservableList<Node> childrens = gridPane.getChildren();
+        AnchorPane.setLeftAnchor(element, width * (percentageFromLeft / 100));
+        AnchorPane.setTopAnchor(element, height * (percentageFromTop / 100));
 
-        for (Node node : childrens)
-        {
-            if (gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column)
-            {
-                result = node;
-                break;
-            }
-        }
-
-        return result;
     }
+
 }

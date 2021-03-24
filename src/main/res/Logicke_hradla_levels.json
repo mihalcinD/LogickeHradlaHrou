@@ -4,52 +4,52 @@
     "elementNmb": 7,
     "element1": [
       "input",
-      "0",
-      "0",
+      "10",
+      "20",
       "false",
       "true"
     ],
     "element2": [
       "input",
-      "0",
-      "1",
+      "10",
+      "25",
       "true",
       "false"
     ],
     "element3": [
       "NAND",
-      "2",
-      "0",
+      "50",
+      "20",
       "2",
       "1",
       "2"
     ],
     "element4": [
       "NOT",
-      "2",
-      "1",
+      "50",
+      "25",
       "1",
       "2"
     ],
     "element5": [
       "AND",
-      "2",
-      "2",
+      "50",
+      "30",
       "2",
       "3",
       "4"
     ],
     "element6": [
       "output",
-      "4",
-      "0",
+      "90",
+      "20",
       "false",
       "false"
     ],
     "element7": [
       "output",
-      "4",
-      "1",
+      "90",
+      "25",
       "false",
       "true"
     ]
