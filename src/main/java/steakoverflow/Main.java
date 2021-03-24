@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class Main extends Application
 {
-    public static double width, height;
+    public static int width, height;
 
     public static void main(String[] args)
     {
@@ -36,18 +36,15 @@ public class Main extends Application
         try
         {
             BufferedReader br = new BufferedReader(new FileReader("src/main/res/settings.cfg"));
-            width = Double.parseDouble(br.readLine().split("= ")[1]);
-            height = Double.parseDouble(br.readLine().split("= ")[1]);
+            width = Integer.parseInt(br.readLine().split("= ")[1]);
+            height = Integer.parseInt(br.readLine().split("= ")[1]);
 
         }
-        catch (FileNotFoundException e)
+        catch (Exception e)
         {
             e.printStackTrace();
+            width = 800;
+            height = 600;
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
     }
 }

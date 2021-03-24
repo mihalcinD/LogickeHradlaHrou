@@ -33,6 +33,7 @@ public class Controller_SelectLevel
 
         window.setScene(tableViewScene);
         window.show();
+
     }
 
     @FXML

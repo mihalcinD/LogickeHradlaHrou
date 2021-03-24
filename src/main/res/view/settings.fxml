@@ -4,28 +4,14 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="700.0" minWidth="900.0"
+            style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="main.java.steakoverflow.controller.Controller_Settings">
-    <bottom>
-        <Button mnemonicParsing="false" onAction="#switchSceneToMenu"
-                style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Menu"
-                textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-            <opaqueInsets>
-                <Insets/>
-            </opaqueInsets>
-            <BorderPane.margin>
-                <Insets bottom="10.0" left="10.0"/>
-            </BorderPane.margin>
-        </Button>
-    </bottom>
     <top>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 48; -fx-font-weight: bold;"
               text="Nastavenia" BorderPane.alignment="CENTER"/>
@@ -35,11 +21,38 @@
             <children>
                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
                       style="-fx-font-size: 36; -fx-font-weight: bold;" text="Rozlíšenie"/>
-                <ComboBox prefWidth="150.0" promptText="900x800" style="-fx-background-color: red;"/>
+                <ComboBox fx:id="comboBox" onAction="#updateSettings" prefWidth="150.0" promptText="900x800"
+                          style="-fx-background-color: red;"/>
             </children>
             <BorderPane.margin>
                 <Insets top="40.0"/>
             </BorderPane.margin>
         </VBox>
     </center>
+    <bottom>
+        <AnchorPane BorderPane.alignment="CENTER">
+            <children>
+                <Button mnemonicParsing="false" onAction="#switchSceneToMenu"
+                        style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Menu"
+                        textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </Button>
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveSettings"
+                        style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Apply"
+                        textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </Button>
+            </children>
+        </AnchorPane>
+    </bottom>
 </BorderPane>
