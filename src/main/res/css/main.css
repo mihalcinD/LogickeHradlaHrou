@@ -9,6 +9,7 @@
 .combo-box {
     -fx-focus-color: transparent;
     -fx-background-insets: -1, -1, -1, -1;
+    -fx-pref-width: 200px;
 }
 
 .combo-box .list-cell {

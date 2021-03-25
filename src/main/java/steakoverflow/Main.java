@@ -13,11 +13,11 @@ import java.io.FileReader;
 public class Main extends Application
 {
     public static int width, height;
-    public static Stage mainStage;
     public static Scene rootScene;
     public static Parent[] roots = new Parent[4];
     public static int activeWindow = 0;
     private String[] paths = {"menu", "selectLevel", "level", "settings"};
+    public static boolean fullscreenWindowed, fullscreen;
 
     public static void main(String[] args)
     {
@@ -37,6 +37,13 @@ public class Main extends Application
         rootScene = new Scene(roots[0], width, height);
         primaryStage.setScene(rootScene);
         primaryStage.setResizable(false);
+        if (fullscreen)
+        {
+            primaryStage.setFullScreen(true);
+            primaryStage.setFullScreenExitHint("");
+        }
+        else if (fullscreenWindowed)
+            primaryStage.setMaximized(true);
         primaryStage.show();
 
     }
@@ -48,6 +55,8 @@ public class Main extends Application
             BufferedReader br = new BufferedReader(new FileReader("src/main/res/settings.cfg"));
             width = Integer.parseInt(br.readLine().split("= ")[1]);
             height = Integer.parseInt(br.readLine().split("= ")[1]);
+            fullscreen = Boolean.parseBoolean(br.readLine().split("= ")[1]);
+            fullscreenWindowed = Boolean.parseBoolean(br.readLine().split("= ")[1]);
 
         }
         catch (Exception e)

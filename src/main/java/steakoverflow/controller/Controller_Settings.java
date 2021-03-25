@@ -1,47 +1,51 @@
 package main.java.steakoverflow.controller;
 
-import javafx.animation.AnimationTimer;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 import main.java.steakoverflow.Main;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 public class Controller_Settings
 {
     public ComboBox<String> comboBox;
+    public VBox alertBox;
+    private boolean checkChanges = false;
 
     public void switchSceneToMenu(ActionEvent event) throws IOException
     {
-//        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
-//        Scene tableViewScene = new Scene(tableViewParent);
-//        //This line gets the Stage information
-//        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        window.setScene(tableViewScene);
-//        window.show();
         Main.activeWindow = 0;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
     }
 
     public void updateSettings(ActionEvent event)
     {
-        String resolution[] = comboBox.getValue().split("x");
-        Main.width = Integer.parseInt(resolution[0]);
-        Main.height = Integer.parseInt(resolution[1]);
+        if (comboBox.getValue().contains("x"))
+        {
+            String resolution[] = comboBox.getValue().split("x");
+            Main.width = Integer.parseInt(resolution[0]);
+            Main.height = Integer.parseInt(resolution[1]);
+            Main.fullscreen = false;
+            Main.fullscreenWindowed = false;
 
-        System.out.println(Main.width);
-        System.out.println(Main.height);
+        }
+        else if (comboBox.getValue().contains("(windowed)"))
+        {
+            Main.fullscreenWindowed = true;
+            Main.fullscreen = false;
+        }
+        else
+        {
+            Main.fullscreen = true;
+            Main.fullscreenWindowed = false;
+        }
+        checkChanges = true;
     }
 
     public void saveSettings()
@@ -52,7 +56,13 @@ public class Controller_Settings
             bw.write("width = " + Main.width);
             bw.newLine();
             bw.write("height = " + Main.height);
+            bw.newLine();
+            bw.write("fullscreen = " + Main.fullscreen);
+            bw.newLine();
+            bw.write("fullscreenWindowed = " + Main.fullscreenWindowed);
             bw.close();
+            if (checkChanges)
+                alertBox.setVisible(true);
         }
         catch (IOException e)
         {
@@ -62,11 +72,22 @@ public class Controller_Settings
 
     public void initialize()
     {
-        ObservableList<String> options = FXCollections.observableArrayList("900x700", "1280x720", "1920x1080");
+        ObservableList<String> options = FXCollections.observableArrayList("900x700", "1280x720", "Fullscreen (windowed)", "Fullscreen");
         comboBox.setItems(options);
-        comboBox.setValue(Main.width + "x" + Main.height);
+        if (Main.fullscreen) comboBox.setValue("Fullscreen");
+        else if (Main.fullscreenWindowed) comboBox.setValue("Fullscreen (windowed)");
+        else comboBox.setValue(Main.width + "x" + Main.height);
 
     }
 
 
+    public void exitGame(ActionEvent actionEvent)
+    {
+        System.exit(0);
+    }
+
+    public void hideAlertBox(ActionEvent actionEvent)
+    {
+        alertBox.setVisible(false);
+    }
 }

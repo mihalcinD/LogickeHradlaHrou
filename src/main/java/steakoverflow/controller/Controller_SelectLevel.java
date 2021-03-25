@@ -26,14 +26,6 @@ public class Controller_SelectLevel
 
     public void switchSceneToMenu(ActionEvent event) throws IOException
     {
-//        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
-//        Scene tableViewScene = new Scene(tableViewParent);
-//
-//        //This line gets the Stage information
-//        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//
-//        window.setScene(tableViewScene);
-//        window.show();
         Main.activeWindow = 0;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
 

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -51,6 +52,40 @@
                         <Insets/>
                     </opaqueInsets>
                 </Button>
+                <VBox fx:id="alertBox" alignment="CENTER" spacing="10.0" visible="false" AnchorPane.rightAnchor="200.0">
+                    <children>
+                        <Text fx:id="alertText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                              style="-fx-font-size: 15; -fx-font-weight: bold;"
+                              text="Zmeny sa prejavia až po reštarte hry. Chcete teraz hru vypnúť?"/>
+                        <HBox alignment="CENTER" spacing="10.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#exitGame"
+                                        style="-fx-background-color: #696969; -fx-font-size: 15px; -fx-font-weight: bold;"
+                                        text="Áno" textFill="WHITE">
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                    <opaqueInsets>
+                                        <Insets/>
+                                    </opaqueInsets>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#hideAlertBox"
+                                        style="-fx-background-color: #696969; -fx-font-size: 15px; -fx-font-weight: bold;"
+                                        text="Nie" textFill="WHITE">
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                    <opaqueInsets>
+                                        <Insets/>
+                                    </opaqueInsets>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets top="10.0"/>
+                    </padding>
+                </VBox>
             </children>
         </AnchorPane>
     </bottom>

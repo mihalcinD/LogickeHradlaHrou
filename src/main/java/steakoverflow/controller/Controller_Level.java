@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import main.java.steakoverflow.Entity;
 import main.java.steakoverflow.Input;
+import main.java.steakoverflow.Main;
 import main.java.steakoverflow.Output;
 import main.java.steakoverflow.gates.*;
 import org.json.simple.JSONArray;
@@ -36,14 +37,10 @@ public class Controller_Level {
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Line> cables = new ArrayList<>();
 
-    public void switchSceneToMenu(ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("../../../res/view/menu.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
-        window.show();
+    public void switchSceneToMenu(ActionEvent event) throws IOException
+    {
+        Main.activeWindow = 0;
+        Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
     }
 
     public void setId(int id)
