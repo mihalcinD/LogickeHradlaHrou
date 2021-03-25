@@ -13,6 +13,11 @@ import java.io.FileReader;
 public class Main extends Application
 {
     public static int width, height;
+    public static Stage mainStage;
+    public static Scene rootScene;
+    public static Parent[] roots = new Parent[4];
+    public static int activeWindow = 0;
+    private String[] paths = {"menu", "selectLevel", "level", "settings"};
 
     public static void main(String[] args)
     {
@@ -23,12 +28,17 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception
     {
         loadSettings();
-        Parent root = FXMLLoader.load(getClass().getResource("../../res/view/menu.fxml"));
+        for (int i = 0; i < roots.length; i++)
+        {
+            roots[i] = FXMLLoader.load(getClass().getResource("../../res/view/" + paths[i] + ".fxml"));
+        }
         primaryStage.setTitle("Logické hradlá hrou");
         primaryStage.getIcons().add(new Image("file:src/main/res/images/Hradla_hrou_icon.png"));
-        primaryStage.setScene(new Scene(root, width, height));
+        rootScene = new Scene(roots[0], width, height);
+        primaryStage.setScene(rootScene);
         primaryStage.setResizable(false);
         primaryStage.show();
+
     }
 
     public void loadSettings()
@@ -46,5 +56,7 @@ public class Main extends Application
             width = 800;
             height = 600;
         }
+
     }
+
 }
