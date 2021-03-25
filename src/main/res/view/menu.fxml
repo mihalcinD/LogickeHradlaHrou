@@ -10,15 +10,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="700.0" minWidth="900.0"
+            style="-fx-background-color: #333845;" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="main.java.steakoverflow.controller.Controller_Menu">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#switchSceneToLevel" prefHeight="80.0" prefWidth="250.0"
-                    style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Hrať"
-                    textFill="WHITE">
+            <Button fx:id="play" mnemonicParsing="false" onAction="#switchSceneToLevel" prefHeight="80.0"
+                    prefWidth="250.0" style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;"
+                    text="Hrať" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND"/>
                </cursor>

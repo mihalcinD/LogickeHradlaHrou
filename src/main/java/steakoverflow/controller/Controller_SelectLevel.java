@@ -34,28 +34,18 @@ public class Controller_SelectLevel
     @FXML
     public void switchSceneToLevel(ActionEvent event) throws IOException
     {
+        // getting id from button
         Node node = (Node) event.getSource();
         String data = (String) node.getUserData();
         int value = Integer.parseInt(data);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../res/view/level.fxml"));
-        Parent root = loader.load();
+        Main.activeWindow = 2;
+        Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
         //Get controller of level scene
-        Controller_Level controller_level = loader.getController();
+        Controller_Level controller = (Controller_Level) Main.roots[Main.activeWindow].getUserData();
         //Pass id to another controller
-        controller_level.setId(value);
-        Scene tableViewScene = new Scene(root);
-        //This line gets the Stage information
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //príprava na prípadnu responzivitu realtime
-      /*  ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue) ->
-                System.out.println("Height: " + window.getHeight() + " Width: " + window.getWidth());
-
-        window.widthProperty().addListener(stageSizeListener);
-        window.heightProperty().addListener(stageSizeListener);*/
-        window.setScene(tableViewScene);
-        window.show();
-        controller_level.renderElements();
+        controller.setId(value);
+        controller.renderElements();
     }
 
     public void initialize()
