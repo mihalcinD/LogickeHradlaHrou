@@ -42,9 +42,9 @@
                         <Insets/>
                     </opaqueInsets>
                 </Button>
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveSettings"
+                <Button fx:id="applyBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveSettings"
                         style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Apply"
-                        textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                        textFill="WHITE" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>

@@ -4,6 +4,7 @@ package main.java.steakoverflow.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import main.java.steakoverflow.Main;
@@ -16,7 +17,7 @@ public class Controller_Settings
 {
     public ComboBox<String> comboBox;
     public VBox alertBox;
-    private boolean checkChanges = false;
+    public Button applyBtn;
 
     public void switchSceneToMenu(ActionEvent event) throws IOException
     {
@@ -45,7 +46,7 @@ public class Controller_Settings
             Main.fullscreen = true;
             Main.fullscreenWindowed = false;
         }
-        checkChanges = true;
+        applyBtn.setVisible(true);
     }
 
     public void saveSettings()
@@ -61,8 +62,7 @@ public class Controller_Settings
             bw.newLine();
             bw.write("fullscreenWindowed = " + Main.fullscreenWindowed);
             bw.close();
-            if (checkChanges)
-                alertBox.setVisible(true);
+            alertBox.setVisible(true);
         }
         catch (IOException e)
         {
@@ -89,5 +89,6 @@ public class Controller_Settings
     public void hideAlertBox(ActionEvent actionEvent)
     {
         alertBox.setVisible(false);
+        applyBtn.setVisible(false);
     }
 }
