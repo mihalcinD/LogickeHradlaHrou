@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import main.java.steakoverflow.controller.Controller_Level;
+import main.java.steakoverflow.controller.Controller_SelectLevel;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -34,13 +35,11 @@ public class Main extends Application
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../res/view/" + paths[i] + ".fxml"));
             roots[i] = loader.load();
 
-
             if (i == 2)
             {
                 Controller_Level controller_level = loader.getController();
                 roots[i].setUserData(controller_level);
             }
-
         }
         primaryStage.setTitle("Logické hradlá hrou");
         primaryStage.getIcons().add(new Image("file:src/main/res/images/Hradla_hrou_icon.png"));

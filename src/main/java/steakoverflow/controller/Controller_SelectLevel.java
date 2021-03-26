@@ -31,7 +31,6 @@ public class Controller_SelectLevel
 
     }
 
-    @FXML
     public void switchSceneToLevel(ActionEvent event) throws IOException
     {
         // getting id from button
@@ -41,11 +40,11 @@ public class Controller_SelectLevel
 
         Main.activeWindow = 2;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
+
         //Get controller of level scene
         Controller_Level controller = (Controller_Level) Main.roots[Main.activeWindow].getUserData();
         //Pass id to another controller
         controller.setId(value);
-        controller.renderElements();
     }
 
     public void initialize()

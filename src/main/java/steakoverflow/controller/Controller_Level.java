@@ -1,24 +1,25 @@
 package main.java.steakoverflow.controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import main.java.steakoverflow.Entity;
 import main.java.steakoverflow.Input;
@@ -29,7 +30,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class Controller_Level {
+public class Controller_Level implements Initializable
+{
 
     public AnchorPane playArea;
     public Text levelID;
@@ -51,7 +53,7 @@ public class Controller_Level {
 
     public void renderElements()
     {
-
+        playArea.getChildren().clear();
         JSONParser parser = new JSONParser();
         Line cable = null;
         try
@@ -128,4 +130,11 @@ public class Controller_Level {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        playArea.heightProperty().addListener(
+                (observable) ->
+                        renderElements());
+    }
 }
