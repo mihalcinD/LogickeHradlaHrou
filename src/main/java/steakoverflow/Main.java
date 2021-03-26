@@ -37,8 +37,8 @@ public class Main extends Application
 
             if (i == 2)
             {
-                Controller_Level controller_level = loader.getController();
-                roots[i].setUserData(controller_level);
+                //Controller_Level controller_level = loader.getController();
+                roots[i].setUserData(loader);
             }
         }
         primaryStage.setTitle("Logické hradlá hrou");
@@ -49,7 +49,7 @@ public class Main extends Application
         if (fullscreen)
         {
             primaryStage.setFullScreen(true);
-            primaryStage.setFullScreenExitHint("");
+            primaryStage.setFullScreenExitHint("Stlačením ESC zmenšíte okno na defaultné rozmery (" + width + "x" + height + ")");
         }
         else if (fullscreenWindowed)
             primaryStage.setMaximized(true);

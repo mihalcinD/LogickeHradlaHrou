@@ -1,21 +1,18 @@
 package main.java.steakoverflow.controller;
 
-import javafx.beans.value.ChangeListener;
+
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import main.java.steakoverflow.Main;
 import org.json.simple.JSONObject;
 
 import java.io.FileReader;
 import java.io.IOException;
+
 
 import org.json.simple.parser.JSONParser;
 
@@ -42,7 +39,8 @@ public class Controller_SelectLevel
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
 
         //Get controller of level scene
-        Controller_Level controller = (Controller_Level) Main.roots[Main.activeWindow].getUserData();
+        FXMLLoader loader = (FXMLLoader) Main.roots[Main.activeWindow].getUserData();
+        Controller_Level controller = loader.getController();
         //Pass id to another controller
         controller.setId(value);
     }

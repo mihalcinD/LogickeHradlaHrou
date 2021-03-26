@@ -1,26 +1,17 @@
 package main.java.steakoverflow.controller;
 
 import javafx.event.ActionEvent;
-
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-
-
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import main.java.steakoverflow.Entity;
 import main.java.steakoverflow.Input;
 import main.java.steakoverflow.Main;
@@ -36,6 +27,7 @@ public class Controller_Level implements Initializable
     public AnchorPane playArea;
     public Text levelID;
     private int id;
+    public Polygon checkButton;
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Line> cables = new ArrayList<>();
 
@@ -106,10 +98,10 @@ public class Controller_Level implements Initializable
                 {
 
                     playArea.getChildren().add(entity.getImg());
-                    generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), 50.0, 50); //malo by vygenerovat presne v strede AnchorPanu
-                    System.out.println(playArea.getWidth());
-                    System.out.println(playArea.getHeight());
+                    generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), entity.getImg().getFitWidth(), entity.getImg().getFitHeight(), Double.parseDouble(element.get(1).toString()), Double.parseDouble(element.get(2).toString()));
+                    // generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(),entity.getImg().getFitWidth(),entity.getImg().getFitHeight(), 50, 50); //malo by vygenerovat presne v strede AnchorPanu
                     entities.add(entity);
+                    entity.getImg().getFitWidth();
                 }
 
 
@@ -123,16 +115,25 @@ public class Controller_Level implements Initializable
         }
     }
 
-    private void generateElementToPlayArea(double width, double height, Node element, double percentageFromLeft, double percentageFromTop)
+    private void generateElementToPlayArea(double widthPane, double heightPane, Node element, double widthElement, double heightElement, double percentageFromLeft, double percentageFromTop)
     {
-        AnchorPane.setLeftAnchor(element, width * (percentageFromLeft / 100));
-        AnchorPane.setTopAnchor(element, height * (percentageFromTop / 100));
+        AnchorPane.setLeftAnchor(element, (widthPane * (percentageFromLeft / 100)) - (widthElement / 2));
+        AnchorPane.setTopAnchor(element, (heightPane * (percentageFromTop / 100)) - (heightElement / 2));
+    }
 
+    private void clearPane()
+    {
+        playArea.getChildren().clear();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+        checkButton.setOnMouseClicked(mouseEvent ->
+        {
+            clearPane();
+            renderElements();
+        });
         playArea.heightProperty().addListener(
                 (observable) ->
                         renderElements());
