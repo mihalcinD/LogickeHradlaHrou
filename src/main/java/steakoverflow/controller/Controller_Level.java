@@ -131,8 +131,7 @@ public class Controller_Level implements Initializable
     {
         checkButton.setOnMouseClicked(mouseEvent ->
         {
-            clearPane();
-            renderElements();
+            //method to check
         });
         playArea.heightProperty().addListener(
                 (observable) ->

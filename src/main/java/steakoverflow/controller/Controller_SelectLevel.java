@@ -43,6 +43,7 @@ public class Controller_SelectLevel
         Controller_Level controller = loader.getController();
         //Pass id to another controller
         controller.setId(value);
+        controller.renderElements();
     }
 
     public void initialize()
