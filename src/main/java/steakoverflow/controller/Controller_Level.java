@@ -69,7 +69,7 @@ public class Controller_Level implements Initializable
                         entity = new Input(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
                         break;
                     case "output":
-                        entity = new Output(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()));
+                        entity = new Output(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Boolean.parseBoolean(element.get(3).toString()), Boolean.parseBoolean(element.get(4).toString()), element.get(5).toString());
                         break;
                     case "NOT":
                         entity = new NOT(i, element.get(0).toString(), Integer.parseInt(element.get(1).toString()), Integer.parseInt(element.get(2).toString()), Integer.parseInt(element.get(3).toString()), element.get(4).toString().split(","));
@@ -152,6 +152,18 @@ public class Controller_Level implements Initializable
                 // set output
                 ((Gate) entity).check();
             }
+            if (entity instanceof Output)
+            {
+                if (entities.get(Integer.parseInt(((Output) entity).getConnectionID())).isValue() == entity.isValue())
+                {
+                    System.out.println("DONE");
+                }
+                else
+                {
+                    System.out.println("NONE");
+                }
+            }
+
         }
     }
 

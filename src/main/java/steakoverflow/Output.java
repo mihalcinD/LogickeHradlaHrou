@@ -8,11 +8,14 @@ import java.io.FileNotFoundException;
 public class Output extends Entity
 {
     private boolean locked;
+    private String connectionID;
 
-    public Output(int idEntity, String type, int x, int y, boolean locked, boolean value) {
+    public Output(int idEntity, String type, int x, int y, boolean locked, boolean value, String connectionID)
+    {
         super(idEntity, type, x, y);
         this.locked = locked;
         this.setValue(value);
+        this.connectionID = connectionID;
         changeImg();
     }
 
@@ -62,5 +65,13 @@ public class Output extends Entity
         }
     }
 
+    public String getConnectionID()
+    {
+        return connectionID;
+    }
 
+    public void setConnectionID(String connectionID)
+    {
+        this.connectionID = connectionID;
+    }
 }
