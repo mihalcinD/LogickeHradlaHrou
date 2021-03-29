@@ -9,18 +9,24 @@ import java.io.FileNotFoundException;
 public class NAND extends Entity
 {
     private int nmbInput;
+    private String[] inputIDs;
     private boolean[] inputValues;
     private boolean outputValue;
 
     // dedit od AND? a len znegovat
 
-    public NAND(int idEntity, String type, int x, int y, int nmbInput) {
+    public NAND(int idEntity, String type, int x, int y, int nmbInput, String[] inputIDs)
+    {
         super(idEntity, type, x, y);
+        this.inputIDs = inputIDs;
         this.nmbInput = nmbInput;
 
-        try {
+        try
+        {
             this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/Nand.png")));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
 

@@ -9,18 +9,24 @@ import java.io.FileNotFoundException;
 public class NOR extends Entity
 {
     private int nmbInput;
+    private String[] inputIDs;
     private boolean[] inputValues;
     private boolean outputValue;
 
     // dedit od OR? a len znegovat
 
-    public NOR(int idEntity, String type, int x, int y, int nmbInput) {
+    public NOR(int idEntity, String type, int x, int y, int nmbInput, String[] inputIDs)
+    {
         super(idEntity, type, x, y);
+        this.inputIDs = inputIDs;
         this.nmbInput = nmbInput;
 
-        try {
+        try
+        {
             this.img.setImage(new Image(new FileInputStream("src/main/res/images/cacoPog.jpg")));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
 

@@ -9,16 +9,22 @@ import java.io.FileNotFoundException;
 public class XOR extends Entity
 {
     private int nmbInput;
+    private String[] inputIDs;
     private boolean[] inputValues;
     private boolean outputValue;
 
-    public XOR(int idEntity, String type, int x, int y, int nmbInput) {
+    public XOR(int idEntity, String type, int x, int y, int nmbInput, String[] inputIDs)
+    {
         super(idEntity, type, x, y);
+        this.inputIDs = inputIDs;
         this.nmbInput = nmbInput;
 
-        try {
+        try
+        {
             this.img.setImage(new Image(new FileInputStream("src/main/res/images/cacoPog.jpg")));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
 

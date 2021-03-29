@@ -9,18 +9,24 @@ import java.io.FileNotFoundException;
 public class XNOR extends Entity
 {
     private int nmbInput;
+    private String[] inputIDs;
     private boolean[] inputValues;
     private boolean outputValue;
 
     // dedit od XOR? a len znegovat
 
-    public XNOR(int idEntity, String type, int x, int y, int nmbInput) {
+    public XNOR(int idEntity, String type, int x, int y, int nmbInput, String[] inputIDs)
+    {
         super(idEntity, type, x, y);
+        this.inputIDs = inputIDs;
         this.nmbInput = nmbInput;
 
-        try {
+        try
+        {
             this.img.setImage(new Image(new FileInputStream("src/main/res/images/cacoPog.jpg")));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
 

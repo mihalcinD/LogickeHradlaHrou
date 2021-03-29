@@ -62,11 +62,25 @@ public class Entity
         this.img = img;
     }
 
-    public int getIdEntity() {
+    public int getIdEntity()
+    {
         return idEntity;
     }
 
-    public void setIdEntity(int idEntity) {
+    public void setIdEntity(int idEntity)
+    {
         this.idEntity = idEntity;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Entity{" +
+                "idEntity=" + idEntity +
+                ", type='" + type + '\'' +
+                ", tableX=" + tableX +
+                ", tableY=" + tableY +
+                ", img=" + img +
+                '}';
     }
 }
