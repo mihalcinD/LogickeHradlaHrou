@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
@@ -46,6 +47,7 @@ public class Controller_Level implements Initializable
     {
         playArea.getChildren().clear();
         entities.clear();
+        cables.clear();
         JSONParser parser = new JSONParser();
         Line cable = null;
         try
@@ -97,11 +99,62 @@ public class Controller_Level implements Initializable
                 if (entity != null)
                 {
 
+                    entity.getImg().setViewOrder(0.0);
                     playArea.getChildren().add(entity.getImg());
                     generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), entity.getImg().getFitWidth(), entity.getImg().getFitHeight(), Double.parseDouble(element.get(1).toString()), Double.parseDouble(element.get(2).toString()));
-                    // generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(),entity.getImg().getFitWidth(),entity.getImg().getFitHeight(), 50, 50); //malo by vygenerovat presne v strede AnchorPanu
                     entities.add(entity);
-                    entity.getImg().getFitWidth();
+                    // System.out.println(entities.get(i-1).getImg().getX() +" " +entities.get(i-1).getImg().getY());
+                    if (entity instanceof Gate)
+                    {
+                        for (int j = 1; j < ((Gate) entity).getInputIDs().length + 1; j++)
+                        {
+                            cable = new Line();
+                            cable.setStroke(Color.RED);
+                            cable.setStrokeWidth(7.0);
+                            cable.setStartX(((entity.getImg().getX() / 100) * playArea.getWidth()) - (entity.getImg().getFitWidth() / 2 - 9));
+                            if (((Gate) entity).getInputIDs().length != 1)
+                            {
+                                switch (j)
+                                {
+                                    case 1:
+                                        cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 19);
+                                        break;
+                                    case 2:
+                                        if (((Gate) entity).getInputIDs().length == 2)
+                                        {
+                                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 71);
+                                        }
+                                        else
+                                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 50);
+                                        break;
+                                    case 3:
+                                        cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 71);
+                                        break;
+                                    default:
+                                        cable.setStartY(0);
+
+                                }
+                            }
+                            else
+                            {
+                                cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 45);
+                            }
+                            if (entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1) instanceof Input)
+                            {
+                                cable.setEndX(((entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getX() / 100) * playArea.getWidth()) + (entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getFitWidth() / 2 - 15));
+                                if (((Input) entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1)).isLocked())
+                                {
+                                    cable.setEndY(((entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getY() / 100) * playArea.getHeight()) + 50);
+                                }
+                                else
+                                    cable.setEndY(((entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getY() / 100) * playArea.getHeight()) + 33);
+                            }
+                            playArea.getChildren().add(cable);
+                            cable.setViewOrder(-1.0);
+                            cables.add(cable);
+                        }
+
+                    }
                 }
 
 

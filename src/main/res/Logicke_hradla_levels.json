@@ -1,7 +1,7 @@
 {
   "levelNmb": 3,
   "level1": {
-    "elementNmb": 7,
+    "elementNmb": 6,
     "element1": [
       "input",
       "10",
@@ -27,17 +27,10 @@
       "NOT",
       "50",
       "30",
-      "2",
-      "1,2"
+      "1",
+      "1"
     ],
     "element5": [
-      "AND",
-      "50",
-      "50",
-      "2",
-      "3,4"
-    ],
-    "element6": [
       "output",
       "90",
       "10",
@@ -45,7 +38,7 @@
       "false",
       "3"
     ],
-    "element7": [
+    "element6": [
       "output",
       "90",
       "30",
@@ -103,14 +96,16 @@
       "90",
       "10",
       "false",
-      "false"
+      "false",
+      "4"
     ],
     "element8": [
       "output",
       "90",
       "30",
       "true",
-      "false"
+      "false",
+      "6"
     ]
   },
   "level3": {
