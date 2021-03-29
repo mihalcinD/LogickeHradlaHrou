@@ -1,24 +1,16 @@
 package main.java.steakoverflow.gates;
 
 import javafx.scene.image.Image;
-import main.java.steakoverflow.Entity;
+import main.java.steakoverflow.Gate;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class NOT extends Entity
+public class NOT extends Gate
 {
-    private int nmbInput;
-    private String[] inputIDs;
-    private boolean[] inputValues;
-    private boolean outputValue;
-
-
-    public NOT(int idEntity, String type, int x, int y, int nmbInput, String[] inputIDs)
+    public NOT(int idEntity, String type, int tableX, int tableY, int nmbInput, String[] inputIDs)
     {
-        super(idEntity, type, x, y);
-        this.inputIDs = inputIDs;
-        this.nmbInput = nmbInput;
+        super(idEntity, type, tableX, tableY, nmbInput, inputIDs);
 
         try
         {
@@ -28,11 +20,10 @@ public class NOT extends Entity
         {
             e.printStackTrace();
         }
-
     }
-    public void check(){
 
-        outputValue=!inputValues[0];
-
+    public void check()
+    {
+        this.setOutputValue(this.getInputValues()[0]);
     }
 }

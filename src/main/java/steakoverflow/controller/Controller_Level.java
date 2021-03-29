@@ -7,15 +7,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import main.java.steakoverflow.Entity;
-import main.java.steakoverflow.Input;
-import main.java.steakoverflow.Main;
-import main.java.steakoverflow.Output;
+
+import main.java.steakoverflow.*;
 import main.java.steakoverflow.gates.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -138,16 +137,13 @@ public class Controller_Level implements Initializable
     {
         for (Entity entity : entities)
         {
-            System.out.println(entity.toString());
-
-            if (entity instanceof Input || entity instanceof Output)
+            if (entity instanceof Gate)
             {
+                for (int i = 0; i < ((Gate) entity).getInputIDs().length; i++)
+                {
+                    System.out.println(((Gate) entity).getInputIDs()[i]);
+                }
             }
-            else
-            {
-                System.out.println(entity.getType());
-            }
-
         }
     }
 
