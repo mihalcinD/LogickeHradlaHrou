@@ -21,6 +21,8 @@ public class XOR extends Gate
             e.printStackTrace();
         }
     }
+
+    @Override
     public void check()
     {
         boolean output = this.getInputValues()[0];

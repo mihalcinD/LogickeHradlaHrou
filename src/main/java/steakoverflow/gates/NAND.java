@@ -22,6 +22,7 @@ public class NAND extends Gate
         }
     }
 
+    @Override
     public void check()
     {
         boolean output = this.getInputValues()[0];

@@ -8,6 +8,7 @@ public class Entity
     private String type;
     private int tableX;
     private int tableY;
+    private boolean value;
     protected ImageView img;
 
     public Entity(int idEntity, String type, int tableX, int tableY) {
@@ -70,6 +71,16 @@ public class Entity
     public void setIdEntity(int idEntity)
     {
         this.idEntity = idEntity;
+    }
+
+    public boolean isValue()
+    {
+        return value;
+    }
+
+    public void setValue(boolean value)
+    {
+        this.value = value;
     }
 
     @Override

@@ -16,6 +16,11 @@ public class Gate extends Entity
 
     }
 
+    public void check()
+    {
+        // just for other to override
+    }
+
     public int getNmbInput()
     {
         return nmbInput;

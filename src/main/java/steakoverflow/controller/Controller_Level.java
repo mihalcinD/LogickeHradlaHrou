@@ -139,10 +139,18 @@ public class Controller_Level implements Initializable
         {
             if (entity instanceof Gate)
             {
-                for (int i = 0; i < ((Gate) entity).getInputIDs().length; i++)
+                // set inputs to object
+                int number_of_inputs = ((Gate) entity).getInputIDs().length;
+                boolean[] values = new boolean[number_of_inputs];
+
+                for (int i = 0; i < number_of_inputs; i++)
                 {
-                    System.out.println(((Gate) entity).getInputIDs()[i]);
+                    values[i] = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[i])).isValue();
                 }
+
+                ((Gate) entity).setInputValues(values);
+                // set output
+                ((Gate) entity).check();
             }
         }
     }

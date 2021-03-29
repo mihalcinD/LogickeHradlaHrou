@@ -23,6 +23,7 @@ public class XNOR extends Gate
         }
     }
 
+    @Override
     public void check()
     {
         boolean output = this.getInputValues()[0];
