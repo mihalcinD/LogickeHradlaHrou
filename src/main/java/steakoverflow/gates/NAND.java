@@ -25,4 +25,14 @@ public class NAND extends Entity
         }
 
     }
+
+    public void check(){
+        boolean output = inputValues[0];
+        for (int i = 1; i <inputValues.length ; i++) {
+            output = Boolean.logicalAnd(output,inputValues[i]);
+
+        }
+        outputValue=!output;
+
+    }
 }

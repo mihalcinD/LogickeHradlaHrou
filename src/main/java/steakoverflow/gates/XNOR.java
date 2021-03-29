@@ -25,4 +25,14 @@ public class XNOR extends Entity
         }
 
     }
+
+    public void check(){
+        boolean output = inputValues[0];
+        for (int i = 1; i <inputValues.length ; i++) {
+            output = Boolean.logicalXor(output,inputValues[i]);
+
+        }
+        outputValue=!output;
+
+    }
 }

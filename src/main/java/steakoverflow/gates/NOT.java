@@ -24,4 +24,9 @@ public class NOT extends Entity
         }
 
     }
+    public void check(){
+
+        outputValue=!inputValues[0];
+
+    }
 }

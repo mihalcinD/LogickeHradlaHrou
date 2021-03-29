@@ -25,4 +25,13 @@ public class NOR extends Entity
         }
 
     }
+    public void check(){
+        boolean output = inputValues[0];
+        for (int i = 1; i <inputValues.length ; i++) {
+            output = Boolean.logicalOr(output,inputValues[i]);
+
+        }
+        outputValue=output;
+
+    }
 }

@@ -14,6 +14,16 @@ import java.io.FileReader;
 
 public class Main extends Application
 {
+    public static int getWidth()
+    {
+        return width;
+    }
+
+    public static int getHeight()
+    {
+        return height;
+    }
+
     public static int width, height;
     public static Scene rootScene;
     public static Parent[] roots = new Parent[4];
