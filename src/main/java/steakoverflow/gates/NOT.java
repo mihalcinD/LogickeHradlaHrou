@@ -25,6 +25,6 @@ public class NOT extends Gate
     @Override
     public void check()
     {
-        this.setOutputValue(this.getInputValues()[0]);
+        this.setValue(!this.getInputValues()[0]);
     }
 }

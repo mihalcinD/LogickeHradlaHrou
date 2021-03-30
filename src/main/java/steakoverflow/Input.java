@@ -1,6 +1,7 @@
 package main.java.steakoverflow;
 
 
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,14 +44,28 @@ public class Input extends Entity
             if (isValue())
             {
                 if (locked)
+                {
                     this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_locked.png")));
-                else this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_unlocked.png")));
+                    this.img.setCursor(Cursor.CLOSED_HAND);
+                }
+                else
+                {
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input1_unlocked.png")));
+                    this.img.setCursor(Cursor.HAND);
+                }
             }
             else
             {
                 if (locked)
+                {
                     this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input0_locked.png")));
-                else this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input0_unlocked.png")));
+                    this.img.setCursor(Cursor.CLOSED_HAND);
+                }
+                else
+                {
+                    this.img.setImage(new Image(new FileInputStream("src/main/res/images/input/input0_unlocked.png")));
+                    this.img.setCursor(Cursor.HAND);
+                }
             }
 
             this.img.setOnMouseClicked(mouseEvent -> clicked());

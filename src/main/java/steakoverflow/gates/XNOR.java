@@ -32,6 +32,6 @@ public class XNOR extends Gate
             output = Boolean.logicalXor(output, this.getInputValues()[i]);
 
         }
-        this.setOutputValue(!output);
+        this.setValue(!output);
     }
 }

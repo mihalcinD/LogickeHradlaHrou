@@ -252,7 +252,7 @@ public class Controller_Level implements Initializable
 
                 for (int i = 0; i < number_of_inputs; i++)
                 {
-                    values[i] = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[i])).isValue();
+                    values[i] = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[i]) - 1).isValue();
                 }
 
                 ((Gate) entity).setInputValues(values);
@@ -261,17 +261,18 @@ public class Controller_Level implements Initializable
             }
             if (entity instanceof Output)
             {
-                if (entities.get(Integer.parseInt(((Output) entity).getConnectionID())).isValue() == entity.isValue())
+                if (entities.get((Integer.parseInt(((Output) entity).getConnectionID())) - 1).isValue() == entity.isValue())
                 {
-                    System.out.println("DONE");
+                    System.out.println("GOOD OUTPUT");
                 }
                 else
                 {
-                    System.out.println("NONE");
+                    System.out.println("BAD OUTPUT");
                 }
             }
 
         }
+        System.out.println("___________________");
     }
 
 

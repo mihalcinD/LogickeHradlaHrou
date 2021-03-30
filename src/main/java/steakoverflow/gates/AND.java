@@ -32,7 +32,7 @@ public class AND extends Gate
             output = Boolean.logicalAnd(output, this.getInputValues()[i]);
 
         }
-        this.setOutputValue(output);
+        this.setValue(output);
 
     }
 }

@@ -5,7 +5,6 @@ public class Gate extends Entity
     private int nmbInput;
     private String[] inputIDs;
     private boolean[] inputValues;
-    private boolean outputValue;
 
     public Gate(int idEntity, String type, int tableX, int tableY, int nmbInput, String[] inputIDs)
     {
@@ -49,15 +48,5 @@ public class Gate extends Entity
     public void setInputValues(boolean[] inputValues)
     {
         this.inputValues = inputValues;
-    }
-
-    public boolean isOutputValue()
-    {
-        return outputValue;
-    }
-
-    public void setOutputValue(boolean outputValue)
-    {
-        this.outputValue = outputValue;
     }
 }

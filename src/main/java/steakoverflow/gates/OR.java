@@ -32,7 +32,7 @@ public class OR extends Gate
             output = Boolean.logicalOr(output, this.getInputValues()[i]);
 
         }
-        this.setOutputValue(output);
+        this.setValue(output);
 
     }
 }
