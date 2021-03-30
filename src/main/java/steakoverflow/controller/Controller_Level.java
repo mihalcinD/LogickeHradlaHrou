@@ -103,12 +103,14 @@ public class Controller_Level implements Initializable
                     entity.getImg().setViewOrder(0.0);
                     if (!(entity instanceof Gate))
                     {
+                        //inputs and outputs set different width
                         entity.getImg().setFitWidth(102);
                     }
                     playArea.getChildren().add(entity.getImg());
+
                     generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), entity.getImg().getFitWidth(), entity.getImg().getFitHeight(), Double.parseDouble(element.get(1).toString()), Double.parseDouble(element.get(2).toString()));
                     entities.add(entity);
-                    // System.out.println(entities.get(i-1).getImg().getX() +" " +entities.get(i-1).getImg().getY());
+
                     if (entity instanceof Gate)
                     {
                         int gateXPositionOfClamp = 9;
@@ -147,13 +149,13 @@ public class Controller_Level implements Initializable
                                         break;
                                     default:
                                         cable.setStartY(0);
-
                                 }
                             }
                             else
                             {
                                 cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOfMiddleClamp);
                             }
+
                             Entity entityToJoin = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1);
 
                             if (entityToJoin instanceof Input)
@@ -170,11 +172,42 @@ public class Controller_Level implements Initializable
                             {
                                 //code for join gate with gate
                             }
+
                             playArea.getChildren().add(cable);
                             cable.setStrokeLineCap(StrokeLineCap.ROUND);
                             cables.add(cable);
                         }
 
+                    }
+                    else if (entity instanceof Output)
+                    {
+                        int outputXPositionOfClamp = 12;
+                        int outputYPositionOfClamp = 22;
+                        int outputLockedYPositionOfClamp = 34;
+                        int gateXPositionOfClamp = 9;
+                        int gateYPositionOfMiddleClamp = 46;
+
+                        cable = new Line();
+                        cable.setStroke(Color.web("#CA5801"));
+                        cable.setStrokeWidth(7.0);
+                        cable.setStartX(((entity.getImg().getX() / 100) * playArea.getWidth()) - (entity.getImg().getFitWidth() / 2 - outputXPositionOfClamp));
+
+                        if (((Output) entity).isLocked())
+                        {
+                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + outputLockedYPositionOfClamp);
+                        }
+                        else
+                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + outputYPositionOfClamp);
+
+                        Entity entityToJoin = entities.get(Integer.parseInt(((Output) entity).getConnectionID()) - 1);
+
+                        cable.setEndX(((entityToJoin.getImg().getX() / 100) * playArea.getWidth()) + (entityToJoin.getImg().getFitWidth() / 2 - gateXPositionOfClamp));
+                        cable.setEndY(((entityToJoin.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOfMiddleClamp);
+
+
+                        playArea.getChildren().add(cable);
+                        cable.setStrokeLineCap(StrokeLineCap.ROUND);
+                        cables.add(cable);
                     }
                 }
 
