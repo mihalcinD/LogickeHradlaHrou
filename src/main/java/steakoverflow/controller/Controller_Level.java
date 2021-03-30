@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Text;
 
 import java.io.FileReader;
@@ -100,35 +101,49 @@ public class Controller_Level implements Initializable
                 {
 
                     entity.getImg().setViewOrder(0.0);
+                    if (!(entity instanceof Gate))
+                    {
+                        entity.getImg().setFitWidth(102);
+                    }
                     playArea.getChildren().add(entity.getImg());
                     generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), entity.getImg().getFitWidth(), entity.getImg().getFitHeight(), Double.parseDouble(element.get(1).toString()), Double.parseDouble(element.get(2).toString()));
                     entities.add(entity);
                     // System.out.println(entities.get(i-1).getImg().getX() +" " +entities.get(i-1).getImg().getY());
                     if (entity instanceof Gate)
                     {
+                        int gateXPositionOfClamp = 9;
+                        int gateYPositionOf1stClamp = 19;
+                        int gateYPositionOf2ndClamp = 71;
+                        int gateYPositionOfMiddleClamp = 45;
+                        int gateYPositionOf3ndClamp = 71;
+
+                        int inputXPositionOfClamp = 12;
+                        int inputYPositionOfClamp = 22;
+                        int inputLockedYPositionOfClamp = 34;
+
                         for (int j = 1; j < ((Gate) entity).getInputIDs().length + 1; j++)
                         {
                             cable = new Line();
-                            cable.setStroke(Color.RED);
+                            cable.setStroke(Color.web("#CA5801"));
                             cable.setStrokeWidth(7.0);
-                            cable.setStartX(((entity.getImg().getX() / 100) * playArea.getWidth()) - (entity.getImg().getFitWidth() / 2 - 9));
+                            cable.setStartX(((entity.getImg().getX() / 100) * playArea.getWidth()) - (entity.getImg().getFitWidth() / 2 - gateXPositionOfClamp));
                             if (((Gate) entity).getInputIDs().length != 1)
                             {
                                 switch (j)
                                 {
                                     case 1:
-                                        cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 19);
+                                        cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOf1stClamp);
                                         break;
                                     case 2:
                                         if (((Gate) entity).getInputIDs().length == 2)
                                         {
-                                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 71);
+                                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOf2ndClamp);
                                         }
                                         else
-                                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 50);
+                                            cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOfMiddleClamp);
                                         break;
                                     case 3:
-                                        cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 71);
+                                        cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOf3ndClamp);
                                         break;
                                     default:
                                         cable.setStartY(0);
@@ -137,20 +152,26 @@ public class Controller_Level implements Initializable
                             }
                             else
                             {
-                                cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + 45);
+                                cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOfMiddleClamp);
                             }
-                            if (entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1) instanceof Input)
+                            Entity entityToJoin = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1);
+
+                            if (entityToJoin instanceof Input)
                             {
-                                cable.setEndX(((entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getX() / 100) * playArea.getWidth()) + (entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getFitWidth() / 2 - 15));
-                                if (((Input) entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1)).isLocked())
+                                cable.setEndX(((entityToJoin.getImg().getX() / 100) * playArea.getWidth()) + (entityToJoin.getImg().getFitWidth() / 2 - inputXPositionOfClamp));
+                                if (((Input) entityToJoin).isLocked())
                                 {
-                                    cable.setEndY(((entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getY() / 100) * playArea.getHeight()) + 50);
+                                    cable.setEndY(((entityToJoin.getImg().getY() / 100) * playArea.getHeight()) + inputLockedYPositionOfClamp);
                                 }
                                 else
-                                    cable.setEndY(((entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1).getImg().getY() / 100) * playArea.getHeight()) + 33);
+                                    cable.setEndY(((entityToJoin.getImg().getY() / 100) * playArea.getHeight()) + inputYPositionOfClamp);
+                            }
+                            else
+                            {
+                                //code for join gate with gate
                             }
                             playArea.getChildren().add(cable);
-                            cable.setViewOrder(-1.0);
+                            cable.setStrokeLineCap(StrokeLineCap.ROUND);
                             cables.add(cable);
                         }
 
