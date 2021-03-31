@@ -44,6 +44,8 @@ public class Controller_Level implements Initializable
     public Button pauseBtn;
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Line> cables = new ArrayList<>();
+    private long start_time;
+    private int attempts;
 
     public void switchSceneToMenu()
     {
@@ -241,6 +243,11 @@ public class Controller_Level implements Initializable
         {
             e.printStackTrace();
         }
+
+        attempts = 0;
+        // start counting time
+        start_time = System.nanoTime();
+
     }
 
     private void generateElementToPlayArea(double widthPane, double heightPane, Node element, double widthElement, double heightElement, double percentageFromLeft, double percentageFromTop)
@@ -263,6 +270,8 @@ public class Controller_Level implements Initializable
 
     public void checkConnection()
     {
+        attempts++;
+        boolean level_passed = true;
 
         for (Entity entity : entities)
         {
@@ -283,23 +292,24 @@ public class Controller_Level implements Initializable
             }
             if (entity instanceof Output)
             {
-                if (entities.get((Integer.parseInt(((Output) entity).getConnectionID())) - 1).isValue() == entity.isValue())
+                if (entities.get((Integer.parseInt(((Output) entity).getConnectionID())) - 1).isValue() != entity.isValue())
                 {
-                    System.out.println("GOOD OUTPUT");
-                }
-                else
-                {
-                    System.out.println("BAD OUTPUT");
+                    level_passed = false;
                 }
             }
-
         }
-        System.out.println("___________________");
-        //toto sa vykona ked vsetky outputs budu spravne
-        showPassWindow();
-        checkButton.setVisible(false);
-        pauseBtn.setVisible(false);
 
+        if (level_passed)
+        {
+            //toto sa vykona ked vsetky outputs budu spravne
+            showPassWindow();
+            checkButton.setVisible(false);
+            pauseBtn.setVisible(false);
+        }
+        else
+        {
+            System.out.println("Mas to zle pepega");
+        }
 
     }
 
@@ -319,9 +329,12 @@ public class Controller_Level implements Initializable
             line.setEffect(bb);
         }
 
+        long finish_time = System.nanoTime();
+        long time_elapsed = ((finish_time - start_time) / 1000000000);
+
         VBox vbox = new VBox();
         Text pass_text = new Text("LEVEL " + id + " zvládnutý");
-        Text time_text = new Text("Celkový čas: ");
+        Text time_text = new Text("Celkový čas: " + time_elapsed + "s, počet pokusov: " + attempts);
         Text menu_text = new Text("Menu");
         ImageView stars = null;
         try
@@ -363,7 +376,7 @@ public class Controller_Level implements Initializable
         reset_btn.setCursor(Cursor.HAND);
         reset_btn.setOnMouseClicked(mouseEvent ->
         {
-            switchSceneToMenu();
+            renderElements();
         });
         continue_btn.setPrefWidth(137);
         continue_btn.setPrefHeight(46);
