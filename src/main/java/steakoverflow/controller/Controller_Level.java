@@ -2,14 +2,26 @@ package main.java.steakoverflow.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -29,12 +41,19 @@ public class Controller_Level implements Initializable
     public Text levelID;
     private int id;
     public Polygon checkButton;
+    public Button pauseBtn;
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Line> cables = new ArrayList<>();
 
-    public void switchSceneToMenu(ActionEvent event) throws IOException
+    public void switchSceneToMenu()
     {
         Main.activeWindow = 0;
+        Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
+    }
+
+    public void switchSceneToSelectLevel()
+    {
+        Main.activeWindow = 1;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
     }
 
@@ -49,6 +68,8 @@ public class Controller_Level implements Initializable
         playArea.getChildren().clear();
         entities.clear();
         cables.clear();
+        pauseBtn.setVisible(true);
+        checkButton.setVisible(true);
         JSONParser parser = new JSONParser();
         Line cable = null;
         try
@@ -242,6 +263,7 @@ public class Controller_Level implements Initializable
 
     public void checkConnection()
     {
+
         for (Entity entity : entities)
         {
             if (entity instanceof Gate)
@@ -273,6 +295,93 @@ public class Controller_Level implements Initializable
 
         }
         System.out.println("___________________");
+        //toto sa vykona ked vsetky outputs budu spravne
+        showPassWindow();
+        checkButton.setVisible(false);
+        pauseBtn.setVisible(false);
+
+
+    }
+
+    private void showPassWindow()
+    {
+        BoxBlur bb = new BoxBlur();
+        bb.setWidth(20);
+        bb.setHeight(20);
+        bb.setIterations(3);
+
+        for (Entity entita : entities)
+        {
+            entita.getImg().setEffect(bb);
+        }
+        for (Line line : cables)
+        {
+            line.setEffect(bb);
+        }
+
+        VBox vbox = new VBox();
+        Text pass_text = new Text("LEVEL " + id + " zvládnutý");
+        Text time_text = new Text("Celkový čas: ");
+        Text menu_text = new Text("Menu");
+        ImageView stars = null;
+        try
+        {
+            stars = new ImageView(new Image(new FileInputStream("src/main/res/images/stars.png")));
+            stars.setPreserveRatio(true);
+            stars.setFitWidth(200);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        HBox btns_hbox = new HBox();
+        Button reset_btn = new Button("Reštart");
+        Button continue_btn = new Button("Pokračovať");
+        vbox.setAlignment(Pos.TOP_CENTER);
+        vbox.setStyle("-fx-background-color: rgba(0,0,0,0.35);");
+        vbox.setPrefWidth(315);
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(10, 10, 10, 10));
+
+        pass_text.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
+        time_text.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
+        menu_text.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #797979;");
+        menu_text.setCursor(Cursor.HAND);
+        menu_text.setOnMouseClicked(mouseEvent ->
+        {
+            switchSceneToMenu();
+        });
+        btns_hbox.setSpacing(20);
+        btns_hbox.setAlignment(Pos.CENTER);
+        btns_hbox.setPadding(new Insets(20, 0, 0, 0));
+        btns_hbox.getChildren().add(reset_btn);
+        btns_hbox.getChildren().add(continue_btn);
+        reset_btn.getStyleClass().add("passBtns");
+        continue_btn.getStyleClass().add("passBtns");
+        reset_btn.setPrefWidth(137);
+        reset_btn.setPrefHeight(46);
+        reset_btn.setCursor(Cursor.HAND);
+        reset_btn.setOnMouseClicked(mouseEvent ->
+        {
+            switchSceneToMenu();
+        });
+        continue_btn.setPrefWidth(137);
+        continue_btn.setPrefHeight(46);
+        continue_btn.setCursor(Cursor.HAND);
+        continue_btn.setOnMouseClicked(mouseEvent ->
+        {
+            switchSceneToSelectLevel();
+        });
+        vbox.getChildren().add(pass_text);
+        vbox.getChildren().add(time_text);
+        vbox.getChildren().add(stars);
+        vbox.getChildren().add(btns_hbox);
+        vbox.getChildren().add(menu_text);
+        playArea.getChildren().add(vbox);
+        System.out.println(playArea.getWidth() * 0.5);
+        AnchorPane.setLeftAnchor(vbox, ((playArea.getWidth() * 0.5) - 157.5));
+        AnchorPane.setTopAnchor(vbox, 50.0);
+
     }
 
 

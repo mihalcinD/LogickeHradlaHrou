@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;"
+<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.java.steakoverflow.controller.Controller_Level">
     <bottom>
@@ -18,13 +18,17 @@
             <cursor>
                 <Cursor fx:constant="HAND"/>
             </cursor>
+            <effect>
+                <DropShadow blurType="GAUSSIAN" height="78.19" radius="38.0" width="75.81"/>
+            </effect>
         </Polygon>
     </bottom>
     <top>
-        <AnchorPane BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="75.0" style="-fx-background-color: #282b36;" BorderPane.alignment="CENTER">
             <children>
-                <Button alignment="CENTER" layoutX="788.0" layoutY="22.0" minHeight="46.0" minWidth="97.0"
-                        mnemonicParsing="false" onAction="#switchSceneToMenu" prefHeight="46.0" prefWidth="104.0"
+                <Button fx:id="pauseBtn" alignment="CENTER" layoutX="788.0" layoutY="22.0" minHeight="46.0"
+                        minWidth="97.0" mnemonicParsing="false" onAction="#switchSceneToMenu" prefHeight="46.0"
+                        prefWidth="104.0"
                         style="-fx-background-color: #FF8048; -fx-font-size: 24px; -fx-font-weight: bold;" text="Pause"
                         textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                     <cursor>
