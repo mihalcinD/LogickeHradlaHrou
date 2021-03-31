@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 import main.java.steakoverflow.*;
 import main.java.steakoverflow.gates.*;
@@ -330,7 +331,9 @@ public class Controller_Level implements Initializable
         }
 
         long finish_time = System.nanoTime();
-        long time_elapsed = ((finish_time - start_time) / 1000000000);
+        double time_elapsed = ((double) (finish_time - start_time) / 10000000);
+        time_elapsed = (double) Math.round(time_elapsed) / 100;
+
 
         VBox vbox = new VBox();
         Text pass_text = new Text("LEVEL " + id + " zvládnutý");
