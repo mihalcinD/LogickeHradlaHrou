@@ -334,7 +334,8 @@ public class Controller_Level implements Initializable
 
         VBox vbox = new VBox();
         Text pass_text = new Text("LEVEL " + id + " zvládnutý");
-        Text time_text = new Text("Celkový čas: " + time_elapsed + "s, počet pokusov: " + attempts);
+        Text time_text = new Text("Celkový čas: " + time_elapsed + "s");
+        Text attempts_text = new Text("Počet pokusov: " + attempts);
         Text menu_text = new Text("Menu");
         ImageView stars = null;
         try
@@ -358,6 +359,7 @@ public class Controller_Level implements Initializable
 
         pass_text.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
         time_text.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
+        attempts_text.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
         menu_text.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #797979;");
         menu_text.setCursor(Cursor.HAND);
         menu_text.setOnMouseClicked(mouseEvent ->
@@ -386,6 +388,7 @@ public class Controller_Level implements Initializable
             switchSceneToSelectLevel();
         });
         vbox.getChildren().add(pass_text);
+        vbox.getChildren().add(attempts_text);
         vbox.getChildren().add(time_text);
         vbox.getChildren().add(stars);
         vbox.getChildren().add(btns_hbox);
