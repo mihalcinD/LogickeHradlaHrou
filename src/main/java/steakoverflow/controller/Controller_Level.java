@@ -331,13 +331,23 @@ public class Controller_Level implements Initializable
         }
 
         long finish_time = System.nanoTime();
-        double time_elapsed = ((double) (finish_time - start_time) / 10000000);
-        time_elapsed = (double) Math.round(time_elapsed) / 100;
-
-
+        double time_elapsed_sec = ((double) (finish_time - start_time) / 10000000);
+        time_elapsed_sec = (double) Math.round(time_elapsed_sec) / 100;
+        int time_elapsed_min = (int) time_elapsed_sec / 60;
+        System.out.println(time_elapsed_sec);
         VBox vbox = new VBox();
         Text pass_text = new Text("LEVEL " + id + " zvládnutý");
-        Text time_text = new Text("Celkový čas: " + time_elapsed + "s");
+        Text time_text;
+        if (time_elapsed_min > 0)
+        {
+            time_elapsed_sec = time_elapsed_sec - (time_elapsed_min * 60);
+            time_text = new Text("Celkový čas: " + time_elapsed_min + "m " + (int) time_elapsed_sec + "s");
+        }
+        else
+        {
+            time_text = new Text("Celkový čas: " + time_elapsed_sec + "s");
+        }
+
         Text attempts_text = new Text("Počet pokusov: " + attempts);
         Text menu_text = new Text("Menu");
         ImageView stars = null;
