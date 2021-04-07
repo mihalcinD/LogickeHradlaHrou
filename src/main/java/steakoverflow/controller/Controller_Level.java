@@ -306,21 +306,35 @@ public class Controller_Level implements Initializable
             showPassWindow();
             checkButton.setVisible(false);
             pauseBtn.setVisible(false);
-
-            Media media = new Media(new File("src/main/res/sounds/completion-of-a-level.wav").toURI().toString());
-            alertPlayer = new MediaPlayer(media);
-            alertPlayer.play();
-            alertPlayer.setVolume((double) Main.volumeSounds / 100);
+            playSound("success");
 
         }
         else
         {
             System.out.println("Mas to zle pepega");
-            Media media = new Media(new File("src/main/res/sounds/error-alert.wav").toURI().toString());
-            alertPlayer = new MediaPlayer(media);
-            alertPlayer.play();
-            alertPlayer.setVolume((double) Main.volumeSounds / 100);
+            playSound("error");
         }
+
+    }
+
+    private void playSound(String sound)
+    {
+        String pathname = "";
+
+        switch (sound.toLowerCase())
+        {
+            case "success":
+                pathname = "src/main/res/sounds/completion-of-a-level.wav";
+                break;
+            case "error":
+                pathname = "src/main/res/sounds/error-alert.wav";
+                break;
+        }
+
+        Media media = new Media(new File(pathname).toURI().toString());
+        alertPlayer = new MediaPlayer(media);
+        alertPlayer.play();
+        alertPlayer.setVolume((double) Main.volumeSounds / 100);
 
     }
 
