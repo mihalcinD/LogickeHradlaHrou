@@ -14,16 +14,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Text;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -40,11 +39,13 @@ public class Controller_Level implements Initializable
 
     public AnchorPane playArea;
     public Text levelID;
-    private int id;
+    public static MediaPlayer alertPlayer;
     public Polygon checkButton;
-    public Button pauseBtn;
+
+    private int id;
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Line> cables = new ArrayList<>();
+    public Button pauseBtn;
     private long start_time;
     private int attempts;
 
@@ -305,10 +306,20 @@ public class Controller_Level implements Initializable
             showPassWindow();
             checkButton.setVisible(false);
             pauseBtn.setVisible(false);
+
+            Media media = new Media(new File("src/main/res/sounds/completion-of-a-level.wav").toURI().toString());
+            alertPlayer = new MediaPlayer(media);
+            alertPlayer.play();
+            alertPlayer.setVolume((double) Main.volumeSounds / 100);
+
         }
         else
         {
             System.out.println("Mas to zle pepega");
+            Media media = new Media(new File("src/main/res/sounds/error-alert.wav").toURI().toString());
+            alertPlayer = new MediaPlayer(media);
+            alertPlayer.play();
+            alertPlayer.setVolume((double) Main.volumeSounds / 100);
         }
 
     }

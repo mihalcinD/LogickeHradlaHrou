@@ -2,7 +2,10 @@ package main.java.steakoverflow;
 
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -36,6 +39,12 @@ public class Output extends Entity
         {
             this.setValue(!this.isValue());
             changeImg();
+
+            MediaPlayer alertPlayer;
+            Media media = new Media(new File("src/main/res/sounds/click.mp3").toURI().toString());
+            alertPlayer = new MediaPlayer(media);
+            alertPlayer.play();
+            alertPlayer.setVolume((double) Main.volumeSounds / 100);
         }
     }
 
