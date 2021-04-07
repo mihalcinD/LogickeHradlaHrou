@@ -5,12 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import main.java.steakoverflow.controller.Controller_Level;
-import main.java.steakoverflow.controller.Controller_SelectLevel;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Paths;
 
 public class Main extends Application
 {
@@ -40,6 +42,8 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception
     {
         loadSettings();
+        playMusic();
+
         for (int i = 0; i < roots.length; i++)
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../res/view/" + paths[i] + ".fxml"));
@@ -64,7 +68,15 @@ public class Main extends Application
         else if (fullscreenWindowed)
             primaryStage.setMaximized(true);
         primaryStage.show();
+    }
 
+    public void playMusic()
+    {
+        Media media = new Media(new File("src/main/res/music/notBad.mp3").toURI().toString());
+        MediaPlayer player = new MediaPlayer(media);
+        player.setAutoPlay(true);
+        //player.setVolume(0.1);
+        //player.play();
     }
 
     public void loadSettings()
