@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -23,6 +24,58 @@
                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
                       style="-fx-font-size: 36; -fx-font-weight: bold;" text="Rozlíšenie"/>
                 <ComboBox fx:id="comboBox" onAction="#updateSettings" prefWidth="150.0" promptText="900x800"/>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                      style="-fx-font-size: 36; -fx-font-weight: bold;" text="Audio"/>
+                <VBox alignment="CENTER_LEFT" maxWidth="300.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" maxWidth="300.0" spacing="10.0">
+                            <children>
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      style="-fx-font-size: 24; -fx-font-weight: bold;" text="Hudba"/>
+                                <HBox alignment="CENTER" spacing="1.0">
+                                    <children>
+                                        <Text fill="#172332" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              style="-fx-font-size: 16; -fx-font-weight: bold;" text="0"/>
+                                        <VBox alignment="BOTTOM_CENTER" prefHeight="60.0">
+                                            <children>
+                                                <Slider fx:id="sliderMusic" onMouseDragged="#valueMusicUpdate"
+                                                        value="50.0"/>
+                                                <Text fx:id="volumeMusic" fill="#9c9c9c" strokeType="OUTSIDE"
+                                                      strokeWidth="0.0"
+                                                      style="-fx-font-size: 16; -fx-font-weight: bold;" text="50"/>
+                                            </children>
+                                        </VBox>
+                                        <Text fill="#172332" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              style="-fx-font-size: 16; -fx-font-weight: bold;" text="100"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" maxWidth="300.0" spacing="10.0">
+                            <children>
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      style="-fx-font-size: 24; -fx-font-weight: bold;" text="Zvuky "/>
+                                <HBox alignment="CENTER" spacing="1.0">
+                                    <children>
+                                        <Text fill="#172332" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              style="-fx-font-size: 16; -fx-font-weight: bold;" text="0"/>
+                                        <VBox alignment="BOTTOM_CENTER" prefHeight="60.0">
+                                            <children>
+                                                <Slider fx:id="sliderSounds" onMouseDragged="#valueSoundsUpdate"
+                                                        value="50.0"/>
+                                                <Text fx:id="volumeSounds" fill="#9c9c9c" strokeType="OUTSIDE"
+                                                      strokeWidth="0.0"
+                                                      style="-fx-font-size: 16; -fx-font-weight: bold;" text="50"/>
+                                            </children>
+                                        </VBox>
+                                        <Text fill="#172332" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              style="-fx-font-size: 16; -fx-font-weight: bold;" text="100"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
             </children>
             <BorderPane.margin>
                 <Insets top="40.0"/>

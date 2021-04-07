@@ -8,11 +8,12 @@ import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.nio.file.Paths;
+
 
 public class Main extends Application
 {
@@ -26,12 +27,13 @@ public class Main extends Application
         return height;
     }
 
-    public static int width, height;
+    public static int width, height, volumeMusic, volumeSounds;
     public static Scene rootScene;
     public static Parent[] roots = new Parent[4];
     public static int activeWindow = 0;
     private String[] paths = {"menu", "selectLevel", "level", "settings"};
     public static boolean fullscreenWindowed, fullscreen;
+    public static MediaPlayer player;
 
     public static void main(String[] args)
     {
@@ -73,9 +75,17 @@ public class Main extends Application
     public void playMusic()
     {
         Media media = new Media(new File("src/main/res/music/notBad.mp3").toURI().toString());
-        MediaPlayer player = new MediaPlayer(media);
+        player = new MediaPlayer(media);
         player.setAutoPlay(true);
-        //player.setVolume(0.1);
+        player.setOnEndOfMedia(new Runnable()
+        {
+            public void run()
+            {
+                player.seek(Duration.ZERO);
+            }
+        });
+        player.play();
+        player.setVolume((double) Main.volumeMusic / 100);
         //player.play();
     }
 
@@ -88,13 +98,18 @@ public class Main extends Application
             height = Integer.parseInt(br.readLine().split("= ")[1]);
             fullscreen = Boolean.parseBoolean(br.readLine().split("= ")[1]);
             fullscreenWindowed = Boolean.parseBoolean(br.readLine().split("= ")[1]);
-
+            volumeMusic = Integer.parseInt(br.readLine().split("= ")[1]);
+            volumeSounds = Integer.parseInt(br.readLine().split("= ")[1]);
         }
         catch (Exception e)
         {
             e.printStackTrace();
             width = 900;
             height = 700;
+            fullscreen = false;
+            fullscreenWindowed = false;
+            volumeMusic = 50;
+            volumeSounds = 50;
         }
 
     }
