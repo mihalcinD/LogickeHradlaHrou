@@ -14,7 +14,7 @@ public class NOR extends Gate
 
         try
         {
-            this.img.setImage(new Image(new FileInputStream("src/main/res/images/Nor.jpg")));
+            this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/NOR.png")));
         }
         catch (FileNotFoundException e)
         {

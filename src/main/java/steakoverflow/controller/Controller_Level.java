@@ -138,17 +138,16 @@ public class Controller_Level implements Initializable
                     if (entity instanceof Gate)
                     {
                         int gateXPositionOfClamp = 9;
-                        int gateYPositionOf1stClamp = 19;
-                        int gateYPositionOf2ndClamp = 71;
-                        int gateYPositionOfMiddleClamp = 45;
-                        int gateYPositionOf3ndClamp = 71;
+                        int gateYPositionOf1stClamp = 17;
+                        int gateYPositionOf2ndClamp = 69;
+                        int gateYPositionOfMiddleClamp = 43;
+                        int gateYPositionOf3ndClamp = 69;
 
                         int inputXPositionOfClamp = 12;
                         int inputYPositionOfClamp = 22;
                         int inputLockedYPositionOfClamp = 34;
 
-                        for (int j = 1; j < ((Gate) entity).getInputIDs().length + 1; j++)
-                        {
+                        for (int j = 1; j < ((Gate) entity).getInputIDs().length + 1; j++) {
                             cable = new Line();
                             cable.setStroke(Color.web("#CA5801"));
                             cable.setStrokeWidth(7.0);
@@ -209,7 +208,7 @@ public class Controller_Level implements Initializable
                         int outputYPositionOfClamp = 22;
                         int outputLockedYPositionOfClamp = 34;
                         int gateXPositionOfClamp = 9;
-                        int gateYPositionOfMiddleClamp = 46;
+                        int gateYPositionOfMiddleClamp = 44;
 
                         cable = new Line();
                         cable.setStroke(Color.web("#CA5801"));

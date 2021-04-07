@@ -15,7 +15,7 @@ public class AND extends Gate
 
         try
         {
-            this.img.setImage(new Image(new FileInputStream("src/main/res/images/cacoPog.jpg")));
+            this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/And.png")));
         }
         catch (FileNotFoundException e)
         {

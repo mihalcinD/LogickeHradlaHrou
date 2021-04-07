@@ -15,7 +15,7 @@ public class XNOR extends Gate
 
         try
         {
-            this.img.setImage(new Image(new FileInputStream("src/main/res/images/Not.jpg")));
+            this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/XNOR.png")));
         }
         catch (FileNotFoundException e)
         {
