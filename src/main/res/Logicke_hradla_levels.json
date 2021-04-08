@@ -2,6 +2,7 @@
   "levelNmb": 3,
   "level1": {
     "elementNmb": 6,
+    "difficulty": 1,
     "element1": [
       "input",
       "10",
@@ -49,6 +50,7 @@
   },
   "level2": {
     "elementNmb": 8,
+    "difficulty": 1,
     "element1": [
       "input",
       "10",

@@ -47,7 +47,8 @@ public class Controller_Level implements Initializable
     private ArrayList<Line> cables = new ArrayList<>();
     public Button pauseBtn;
     private long start_time;
-    private int attempts;
+    private int attempts, difficulty;
+    private final double multiplier_sec = 30;
 
     public void switchSceneToMenu()
     {
@@ -83,6 +84,7 @@ public class Controller_Level implements Initializable
 
             //int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
             JSONObject level = (JSONObject) jsonObject.get("level" + id);
+            difficulty = Integer.parseInt(level.get("difficulty").toString());
 
             for (int i = 1; i < Integer.parseInt(level.get("elementNmb").toString()) + 1; i++)
             {
@@ -357,8 +359,28 @@ public class Controller_Level implements Initializable
         long finish_time = System.nanoTime();
         double time_elapsed_sec = ((double) (finish_time - start_time) / 10000000);
         time_elapsed_sec = (double) Math.round(time_elapsed_sec) / 100;
+        ImageView stars = null;
+
+        try
+        {
+            if ((multiplier_sec * difficulty) - time_elapsed_sec >= 0)
+            {
+                stars = new ImageView(new Image(new FileInputStream("src/main/res/images/3OutOf3Stars.png")));
+            }
+            else if ((multiplier_sec * difficulty) - time_elapsed_sec >= -(multiplier_sec * difficulty))
+            {
+                stars = new ImageView(new Image(new FileInputStream("src/main/res/images/2OutOf3Stars.png")));
+            }
+            else stars = new ImageView(new Image(new FileInputStream("src/main/res/images/1OutOf3Stars.png")));
+            stars.setPreserveRatio(true);
+            stars.setFitWidth(200);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
         int time_elapsed_min = (int) time_elapsed_sec / 60;
-        System.out.println(time_elapsed_sec);
         VBox vbox = new VBox();
         Text pass_text = new Text("LEVEL " + id + " zvládnutý");
         Text time_text;
@@ -374,17 +396,7 @@ public class Controller_Level implements Initializable
 
         Text attempts_text = new Text("Počet pokusov: " + attempts);
         Text menu_text = new Text("Menu");
-        ImageView stars = null;
-        try
-        {
-            stars = new ImageView(new Image(new FileInputStream("src/main/res/images/stars.png")));
-            stars.setPreserveRatio(true);
-            stars.setFitWidth(200);
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
+
         HBox btns_hbox = new HBox();
         Button reset_btn = new Button("Reštart");
         Button continue_btn = new Button("Pokračovať");
