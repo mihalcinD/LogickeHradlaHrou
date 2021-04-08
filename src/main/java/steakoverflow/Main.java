@@ -74,7 +74,7 @@ public class Main extends Application
 
     public void playMusic()
     {
-        Media media = new Media(new File("src/main/res/music/notBad.mp3").toURI().toString());
+        Media media = new Media(new File("src/main/res/music/Pumping_ation_perfection.wav").toURI().toString());
         player = new MediaPlayer(media);
         player.setAutoPlay(true);
         player.setOnEndOfMedia(new Runnable()
@@ -86,7 +86,6 @@ public class Main extends Application
         });
         player.play();
         player.setVolume((double) Main.volumeMusic / 100);
-        //player.play();
     }
 
     public void loadSettings()
