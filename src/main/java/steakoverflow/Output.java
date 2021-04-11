@@ -4,6 +4,7 @@ import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import main.java.steakoverflow.controller.Controller_Level;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,7 +36,7 @@ public class Output extends Entity
 
     public void clicked()
     {
-        if (!this.locked)
+        if (!this.locked && !Controller_Level.isInPause)
         {
             this.setValue(!this.isValue());
             changeImg();

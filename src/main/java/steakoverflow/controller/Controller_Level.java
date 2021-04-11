@@ -39,13 +39,13 @@ public class Controller_Level implements Initializable
 
     public AnchorPane playArea;
     public Text levelID;
-    public static MediaPlayer alertPlayer;
     public Polygon checkButton;
-
+    public static boolean isInPause;
+    public static MediaPlayer alertPlayer;
+    public Button pauseBtn;
     private int id;
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Line> cables = new ArrayList<>();
-    public Button pauseBtn;
     private long start_time;
     private int attempts, difficulty;
     private final double multiplier_sec = 30;
@@ -73,6 +73,7 @@ public class Controller_Level implements Initializable
         playArea.getChildren().clear();
         entities.clear();
         cables.clear();
+        isInPause = false;
         pauseBtn.setVisible(true);
         checkButton.setVisible(true);
         JSONParser parser = new JSONParser();
@@ -306,6 +307,7 @@ public class Controller_Level implements Initializable
         {
             //toto sa vykona ked vsetky outputs budu spravne
             showPassWindow();
+            isInPause = true;
             checkButton.setVisible(false);
             pauseBtn.setVisible(false);
             playSound("success");
