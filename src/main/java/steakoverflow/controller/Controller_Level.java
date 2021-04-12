@@ -356,17 +356,11 @@ public class Controller_Level implements Initializable
             entita.getImg().setEffect(bb);
             if (entita instanceof Output)
             {
-                if (!((Output) entita).isLocked())
-                {
                     entita.getImg().setCursor(Cursor.DEFAULT);
-                }
             }
             else if (entita instanceof Input)
             {
-                if (!((Input) entita).isLocked())
-                {
-                    entita.getImg().setCursor(Cursor.DEFAULT);
-                }
+                entita.getImg().setCursor(Cursor.DEFAULT);
             }
         }
         for (Line line : cables)
@@ -386,6 +380,8 @@ public class Controller_Level implements Initializable
                 {
                     entita.getImg().setCursor(Cursor.HAND);
                 }
+                else
+                    entita.getImg().setCursor(Cursor.CLOSED_HAND);
             }
             else if (entita instanceof Input)
             {
@@ -393,6 +389,8 @@ public class Controller_Level implements Initializable
                 {
                     entita.getImg().setCursor(Cursor.HAND);
                 }
+                else
+                    entita.getImg().setCursor(Cursor.CLOSED_HAND);
             }
         }
         for (Line line : cables)
