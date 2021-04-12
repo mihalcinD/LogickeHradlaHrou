@@ -1,6 +1,7 @@
 package main.java.steakoverflow.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -44,6 +45,7 @@ public class Controller_Level implements Initializable
     public static MediaPlayer alertPlayer;
     public Button pauseBtn;
     private int id;
+    private int numberOfLevels;
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Line> cables = new ArrayList<>();
     private long start_time;
@@ -83,7 +85,7 @@ public class Controller_Level implements Initializable
             Object obj = parser.parse(new FileReader("src/main/res/Logicke_hradla_levels.json"));
             JSONObject jsonObject = (JSONObject) obj;
 
-            //int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
+            numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
             JSONObject level = (JSONObject) jsonObject.get("level" + id);
             difficulty = Integer.parseInt(level.get("difficulty").toString());
 
@@ -436,7 +438,16 @@ public class Controller_Level implements Initializable
         continue_btn.setCursor(Cursor.HAND);
         continue_btn.setOnMouseClicked(mouseEvent ->
         {
-            switchSceneToSelectLevel();
+            if (id + 1 <= numberOfLevels)
+            {
+                setId(id += 1);
+                renderElements();
+            }
+            else
+            {
+                switchSceneToSelectLevel();
+            }
+
         });
         vbox.getChildren().add(pass_text);
         vbox.getChildren().add(attempts_text);
@@ -450,6 +461,5 @@ public class Controller_Level implements Initializable
         AnchorPane.setTopAnchor(vbox, 50.0);
 
     }
-
 
 }
