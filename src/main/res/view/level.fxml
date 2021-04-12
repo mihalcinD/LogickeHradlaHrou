@@ -27,9 +27,9 @@
         <AnchorPane prefHeight="75.0" style="-fx-background-color: #282b36;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="pauseBtn" alignment="CENTER" layoutX="788.0" layoutY="22.0" minHeight="46.0"
-                        minWidth="97.0" mnemonicParsing="false" onAction="#switchSceneToMenu" prefHeight="46.0"
+                        minWidth="97.0" mnemonicParsing="false" onAction="#showPauseMenu" prefHeight="46.0"
                         prefWidth="104.0"
-                        style="-fx-background-color: #FF8048; -fx-font-size: 24px; -fx-font-weight: bold;" text="Pause"
+                        style="-fx-background-color: #FF8048; -fx-font-size: 24px; -fx-font-weight: bold;" text="Pauza"
                         textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                     <cursor>
                         <Cursor fx:constant="HAND"/>

@@ -1,6 +1,6 @@
 package main.java.steakoverflow.controller;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -12,7 +12,7 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -27,8 +27,6 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
-
 import main.java.steakoverflow.*;
 import main.java.steakoverflow.gates.*;
 import org.json.simple.JSONArray;
@@ -51,6 +49,8 @@ public class Controller_Level implements Initializable
     private long start_time;
     private int attempts, difficulty;
     private final double multiplier_sec = 30;
+    private VBox vbox;
+    private double time_inPause_sec = 0;
 
     public void switchSceneToMenu()
     {
@@ -72,6 +72,7 @@ public class Controller_Level implements Initializable
 
     public void renderElements()
     {
+        time_inPause_sec = 0;
         playArea.getChildren().clear();
         entities.clear();
         cables.clear();
@@ -310,8 +311,7 @@ public class Controller_Level implements Initializable
             //toto sa vykona ked vsetky outputs budu spravne
             showPassWindow();
             isInPause = true;
-            checkButton.setVisible(false);
-            pauseBtn.setVisible(false);
+            hideControls();
             playSound("success");
 
         }
@@ -344,7 +344,7 @@ public class Controller_Level implements Initializable
 
     }
 
-    private void showPassWindow()
+    private void blurElements()
     {
         BoxBlur bb = new BoxBlur();
         bb.setWidth(20);
@@ -354,14 +354,83 @@ public class Controller_Level implements Initializable
         for (Entity entita : entities)
         {
             entita.getImg().setEffect(bb);
+            if (entita instanceof Output)
+            {
+                if (!((Output) entita).isLocked())
+                {
+                    entita.getImg().setCursor(Cursor.DEFAULT);
+                }
+            }
+            else if (entita instanceof Input)
+            {
+                if (!((Input) entita).isLocked())
+                {
+                    entita.getImg().setCursor(Cursor.DEFAULT);
+                }
+            }
         }
         for (Line line : cables)
         {
             line.setEffect(bb);
         }
+    }
 
+    private void unblurElements()
+    {
+        for (Entity entita : entities)
+        {
+            entita.getImg().setEffect(null);
+            if (entita instanceof Output)
+            {
+                if (!((Output) entita).isLocked())
+                {
+                    entita.getImg().setCursor(Cursor.HAND);
+                }
+            }
+            else if (entita instanceof Input)
+            {
+                if (!((Input) entita).isLocked())
+                {
+                    entita.getImg().setCursor(Cursor.HAND);
+                }
+            }
+        }
+        for (Line line : cables)
+        {
+            line.setEffect(null);
+        }
+    }
+
+    private void hideControls()
+    {
+        checkButton.setVisible(false);
+        pauseBtn.setVisible(false);
+    }
+
+    private void showControls()
+    {
+        checkButton.setVisible(true);
+        pauseBtn.setVisible(true);
+    }
+
+    private void createVbox()
+    {
+        vbox = new VBox();
+        vbox.setAlignment(Pos.TOP_CENTER);
+        vbox.setStyle("-fx-background-color: rgba(0,0,0,0.35);");
+        vbox.setPrefWidth(315);
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(10, 10, 10, 10));
+        AnchorPane.setLeftAnchor(vbox, ((playArea.getWidth() * 0.5) - 157.5));
+        AnchorPane.setTopAnchor(vbox, 50.0);
+    }
+
+    private void showPassWindow()
+    {
+        blurElements();
+        createVbox();
         long finish_time = System.nanoTime();
-        double time_elapsed_sec = ((double) (finish_time - start_time) / 10000000);
+        double time_elapsed_sec = ((double) (finish_time - start_time) / 10000000) - time_inPause_sec;
         time_elapsed_sec = (double) Math.round(time_elapsed_sec) / 100;
         ImageView stars = null;
 
@@ -385,7 +454,6 @@ public class Controller_Level implements Initializable
         }
 
         int time_elapsed_min = (int) time_elapsed_sec / 60;
-        VBox vbox = new VBox();
         Text pass_text = new Text("LEVEL " + id + " zvládnutý");
         Text time_text;
         if (time_elapsed_min > 0)
@@ -400,16 +468,9 @@ public class Controller_Level implements Initializable
 
         Text attempts_text = new Text("Počet pokusov: " + attempts);
         Text menu_text = new Text("Menu");
-
         HBox btns_hbox = new HBox();
         Button reset_btn = new Button("Reštart");
         Button continue_btn = new Button("Pokračovať");
-        vbox.setAlignment(Pos.TOP_CENTER);
-        vbox.setStyle("-fx-background-color: rgba(0,0,0,0.35);");
-        vbox.setPrefWidth(315);
-        vbox.setSpacing(10);
-        vbox.setPadding(new Insets(10, 10, 10, 10));
-
         pass_text.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
         time_text.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
         attempts_text.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
@@ -449,6 +510,7 @@ public class Controller_Level implements Initializable
             }
 
         });
+
         vbox.getChildren().add(pass_text);
         vbox.getChildren().add(attempts_text);
         vbox.getChildren().add(time_text);
@@ -456,9 +518,57 @@ public class Controller_Level implements Initializable
         vbox.getChildren().add(btns_hbox);
         vbox.getChildren().add(menu_text);
         playArea.getChildren().add(vbox);
-        System.out.println(playArea.getWidth() * 0.5);
-        AnchorPane.setLeftAnchor(vbox, ((playArea.getWidth() * 0.5) - 157.5));
-        AnchorPane.setTopAnchor(vbox, 50.0);
+    }
+
+    public void showPauseMenu()
+    {
+        long start_time_pause = System.nanoTime();
+
+        isInPause = true;
+        createVbox();
+        Text pause_text = new Text("Pauza");
+        pause_text.setStyle("-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
+
+        Button continue_btn = new Button("Pokračovať");
+        continue_btn.setPrefWidth(200);
+        continue_btn.getStyleClass().add("passBtns");
+        continue_btn.setCursor(Cursor.HAND);
+        continue_btn.setOnMouseClicked(mouseEvent ->
+        {
+            long finish_time_pause = System.nanoTime();
+            time_inPause_sec += ((double) (finish_time_pause - start_time_pause) / 10000000);
+            showControls();
+            unblurElements();
+            isInPause = false;
+            vbox.setVisible(false);
+
+        });
+
+        Button menu_btn = new Button("Menu");
+        menu_btn.setPrefWidth(200);
+        menu_btn.getStyleClass().add("passBtns");
+        menu_btn.setCursor(Cursor.HAND);
+        menu_btn.setOnMouseClicked(mouseEvent ->
+        {
+            switchSceneToMenu();
+        });
+
+        Button reset_btn = new Button("Reštart");
+        reset_btn.setPrefWidth(200);
+        reset_btn.getStyleClass().add("passBtns");
+        reset_btn.setCursor(Cursor.HAND);
+        reset_btn.setOnMouseClicked(mouseEvent ->
+        {
+            renderElements();
+        });
+        vbox.setPadding(new Insets(0, 0, 20, 0));
+        vbox.getChildren().add(pause_text);
+        vbox.getChildren().add(continue_btn);
+        vbox.getChildren().add(reset_btn);
+        vbox.getChildren().add(menu_btn);
+        blurElements();
+        hideControls();
+        playArea.getChildren().add(vbox);
 
     }
 
