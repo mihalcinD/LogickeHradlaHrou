@@ -1,6 +1,9 @@
 package main.java.steakoverflow.controller;
 
 
+import javafx.animation.ScaleTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -27,6 +30,9 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
+
+import javafx.util.Duration;
 import main.java.steakoverflow.*;
 import main.java.steakoverflow.gates.*;
 import org.json.simple.JSONArray;
@@ -282,6 +288,44 @@ public class Controller_Level implements Initializable
                         renderElements());
     }
 
+    public void wrongConnectionNotification()
+    {
+        try
+        {
+            ImageView x = new ImageView(new Image(new FileInputStream("src/main/res/images/wrong.png")));
+            x.setPreserveRatio(true);
+            x.setFitWidth(100);
+            playArea.getChildren().add(x);
+            ScaleTransition st = new ScaleTransition(Duration.millis(200), x);
+            st.setByX(2);
+            st.setByY(2);
+            st.play();
+            st.setOnFinished(new EventHandler<ActionEvent>()
+            {
+                @Override
+                public void handle(ActionEvent actionEvent)
+                {
+                    try
+                    {
+                        TimeUnit.MILLISECONDS.sleep(500);
+                    }
+                    catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    x.setVisible(false);
+                }
+            });
+            AnchorPane.setLeftAnchor(x, (playArea.getWidth() * 0.5) - 50);
+            AnchorPane.setTopAnchor(x, (playArea.getHeight() * 0.5) - 50);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
     public void checkConnection()
     {
         attempts++;
@@ -325,6 +369,7 @@ public class Controller_Level implements Initializable
         else
         {
             System.out.println("Mas to zle pepega");
+            wrongConnectionNotification();
             playSound("error");
         }
 
