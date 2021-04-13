@@ -443,13 +443,25 @@ public class Controller_Level implements Initializable
         {
             if ((multiplier_sec * difficulty) - time_elapsed_sec >= 0)
             {
-                stars = new ImageView(new Image(new FileInputStream("src/main/res/images/3OutOf3Stars.png")));
+                if (attempts == 1)
+                {
+                    stars = new ImageView(new Image(new FileInputStream("src/main/res/images/3OutOf3Stars.png")));
+                }
+                else
+                    stars = new ImageView(new Image(new FileInputStream("src/main/res/images/2OutOf3Stars.png")));
+
             }
             else if ((multiplier_sec * difficulty) - time_elapsed_sec >= -(multiplier_sec * difficulty))
             {
-                stars = new ImageView(new Image(new FileInputStream("src/main/res/images/2OutOf3Stars.png")));
+                if (attempts < 4)
+                    stars = new ImageView(new Image(new FileInputStream("src/main/res/images/2OutOf3Stars.png")));
+                else
+                    stars = new ImageView(new Image(new FileInputStream("src/main/res/images/1OutOf3Stars.png")));
+
             }
-            else stars = new ImageView(new Image(new FileInputStream("src/main/res/images/1OutOf3Stars.png")));
+            else
+                stars = new ImageView(new Image(new FileInputStream("src/main/res/images/1OutOf3Stars.png")));
+
             stars.setPreserveRatio(true);
             stars.setFitWidth(200);
         }
