@@ -86,6 +86,7 @@ public class Controller_Level implements Initializable
         isInPause = false;
         pauseBtn.setVisible(true);
         checkButton.setVisible(true);
+        canCheck = true;
         JSONParser parser = new JSONParser();
         Line cable = null;
         try
