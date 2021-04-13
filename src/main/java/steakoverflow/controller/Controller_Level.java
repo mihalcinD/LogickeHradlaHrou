@@ -57,6 +57,7 @@ public class Controller_Level implements Initializable
     private final double multiplier_sec = 30;
     private VBox vbox;
     private double time_inPause_sec = 0;
+    private boolean canCheck = true;
 
     public void switchSceneToMenu()
     {
@@ -314,6 +315,7 @@ public class Controller_Level implements Initializable
                         e.printStackTrace();
                     }
                     x.setVisible(false);
+                    canCheck = true;
                 }
             });
             AnchorPane.setLeftAnchor(x, (playArea.getWidth() * 0.5) - 50);
@@ -328,51 +330,52 @@ public class Controller_Level implements Initializable
 
     public void checkConnection()
     {
-        attempts++;
-        boolean level_passed = true;
-
-        for (Entity entity : entities)
+        if (canCheck)
         {
-            if (entity instanceof Gate)
+            canCheck = false;
+            attempts++;
+            boolean level_passed = true;
+            for (Entity entity : entities)
             {
-                // set inputs to object
-                int number_of_inputs = ((Gate) entity).getInputIDs().length;
-                boolean[] values = new boolean[number_of_inputs];
-
-                for (int i = 0; i < number_of_inputs; i++)
+                if (entity instanceof Gate)
                 {
-                    values[i] = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[i]) - 1).isValue();
-                }
+                    // set inputs to object
+                    int number_of_inputs = ((Gate) entity).getInputIDs().length;
+                    boolean[] values = new boolean[number_of_inputs];
 
-                ((Gate) entity).setInputValues(values);
-                // set output
-                ((Gate) entity).check();
+                    for (int i = 0; i < number_of_inputs; i++)
+                    {
+                        values[i] = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[i]) - 1).isValue();
+                    }
+
+                    ((Gate) entity).setInputValues(values);
+                    // set output
+                    ((Gate) entity).check();
+                }
+                if (entity instanceof Output)
+                {
+                    if (entities.get((Integer.parseInt(((Output) entity).getConnectionID())) - 1).isValue() != entity.isValue())
+                    {
+                        level_passed = false;
+                    }
+                }
             }
-            if (entity instanceof Output)
+
+            if (level_passed)
             {
-                if (entities.get((Integer.parseInt(((Output) entity).getConnectionID())) - 1).isValue() != entity.isValue())
-                {
-                    level_passed = false;
-                }
+                //toto sa vykona ked vsetky outputs budu spravne
+                showPassWindow();
+                isInPause = true;
+                hideControls();
+                playSound("success");
+
+            }
+            else
+            {
+                wrongConnectionNotification();
+                playSound("error");
             }
         }
-
-        if (level_passed)
-        {
-            //toto sa vykona ked vsetky outputs budu spravne
-            showPassWindow();
-            isInPause = true;
-            hideControls();
-            playSound("success");
-
-        }
-        else
-        {
-            System.out.println("Mas to zle pepega");
-            wrongConnectionNotification();
-            playSound("error");
-        }
-
     }
 
     private void playSound(String sound)
@@ -492,8 +495,10 @@ public class Controller_Level implements Initializable
                 {
                     stars = new ImageView(new Image(new FileInputStream("src/main/res/images/3OutOf3Stars.png")));
                 }
-                else
+                else if (attempts < 4)
                     stars = new ImageView(new Image(new FileInputStream("src/main/res/images/2OutOf3Stars.png")));
+                else
+                    stars = new ImageView(new Image(new FileInputStream("src/main/res/images/1OutOf3Stars.png")));
 
             }
             else if ((multiplier_sec * difficulty) - time_elapsed_sec >= -(multiplier_sec * difficulty))
