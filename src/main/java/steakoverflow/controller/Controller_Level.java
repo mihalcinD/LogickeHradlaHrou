@@ -154,7 +154,11 @@ public class Controller_Level implements Initializable
                         int inputYPositionOfClamp = 22;
                         int inputLockedYPositionOfClamp = 34;
 
-                        for (int j = 1; j < ((Gate) entity).getInputIDs().length + 1; j++) {
+                        int gateXPositionOfOutputClamp = 9;
+                        int gateYPositionOfOutputClamp = 44;
+
+                        for (int j = 1; j < ((Gate) entity).getInputIDs().length + 1; j++)
+                        {
                             cable = new Line();
                             cable.setStroke(Color.web("#CA5801"));
                             cable.setStrokeWidth(7.0);
@@ -201,6 +205,9 @@ public class Controller_Level implements Initializable
                             else
                             {
                                 //code for join gate with gate
+                                cable.setEndX(((entityToJoin.getImg().getX() / 100) * playArea.getWidth()) + (entityToJoin.getImg().getFitWidth() / 2 - gateXPositionOfOutputClamp));
+                                cable.setEndY(((entityToJoin.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOfOutputClamp);
+
                             }
 
                             playArea.getChildren().add(cable);

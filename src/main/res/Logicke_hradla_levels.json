@@ -1,7 +1,7 @@
 {
   "levelNmb": 3,
   "level1": {
-    "elementNmb": 6,
+    "elementNmb": 7,
     "difficulty": 1,
     "element1": [
       "input",
@@ -32,14 +32,21 @@
       "1"
     ],
     "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
       "output",
       "90",
       "10",
       "false",
       "false",
-      "3"
+      "5"
     ],
-    "element6": [
+    "element7": [
       "output",
       "90",
       "30",
