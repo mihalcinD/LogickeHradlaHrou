@@ -74,7 +74,7 @@ public class Controller_SelectLevel
             {
                 HBox row = new HBox();
                 row.setSpacing(5);
-                row.setAlignment(Pos.TOP_CENTER);
+                row.setAlignment(Pos.TOP_LEFT);
                 rows.add(row);
             }
             vboxContainer.getChildren().add(rows.get(currentRow));
