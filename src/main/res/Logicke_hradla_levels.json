@@ -1,5 +1,5 @@
 {
-  "levelNmb": 3,
+  "levelNmb": 24,
   "level1": {
     "elementNmb": 7,
     "difficulty": 1,
@@ -118,59 +118,1213 @@
     ]
   },
   "level3": {
-    "elementNmb": 8,
+    "elementNmb": 7,
+    "difficulty": 1,
     "element1": [
       "input",
-      "135",
-      "93",
-      "true",
+      "10",
+      "10",
+      "false",
       "true"
     ],
     "element2": [
       "input",
-      "135",
-      "93",
+      "10",
+      "30",
       "true",
       "false"
     ],
     "element3": [
-      "input",
-      "135",
-      "93",
-      "false",
-      "false"
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
     ],
     "element4": [
-      "NAND",
-      "193",
-      "89",
-      "3"
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
     ],
     "element5": [
       "NOT",
-      "203",
-      "45",
-      "1"
+      "70",
+      "10",
+      "1",
+      "3"
     ],
     "element6": [
-      "AND",
-      "145",
-      "78",
-      "2"
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
     ],
     "element7": [
       "output",
-      "560",
-      "230",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level4": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
       "true",
       "false"
     ],
-    "element8": [
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
       "output",
-      "560",
-      "230",
+      "90",
+      "10",
       "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level5": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
       "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level6": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level7": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level8": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level9": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level10": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level11": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level12": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level13": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level14": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level15": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level16": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level17": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level18": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level19": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level20": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level21": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level22": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level23": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
+    ]
+  },
+  "level24": {
+    "elementNmb": 7,
+    "difficulty": 1,
+    "element1": [
+      "input",
+      "10",
+      "10",
+      "false",
+      "true"
+    ],
+    "element2": [
+      "input",
+      "10",
+      "30",
+      "true",
+      "false"
+    ],
+    "element3": [
+      "NAND",
+      "50",
+      "10",
+      "2",
+      "1,2"
+    ],
+    "element4": [
+      "NOT",
+      "50",
+      "30",
+      "1",
+      "1"
+    ],
+    "element5": [
+      "NOT",
+      "70",
+      "10",
+      "1",
+      "3"
+    ],
+    "element6": [
+      "output",
+      "90",
+      "10",
+      "false",
+      "false",
+      "5"
+    ],
+    "element7": [
+      "output",
+      "90",
+      "30",
+      "false",
+      "true",
+      "4"
     ]
   }
 }

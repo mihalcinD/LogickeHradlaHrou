@@ -5,6 +5,7 @@
     -fx-cursor: hand;
     -fx-l-margin: 20%;
     -fx-background-radius: 0;
+    -fx-pref-width: 50;
 }
 
 .btnColor1 {

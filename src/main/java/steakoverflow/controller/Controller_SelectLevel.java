@@ -3,6 +3,8 @@ package main.java.steakoverflow.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -12,15 +14,19 @@ import javafx.scene.paint.Color;
 import main.java.steakoverflow.Main;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.json.simple.parser.JSONParser;
 
 public class Controller_SelectLevel
 {
 
-    public HBox hbox;
+    private ArrayList<HBox> rows;
+    public VBox vboxContainer;
     private boolean[] progression;
 
     public void switchSceneToMenu(ActionEvent event) throws IOException
@@ -49,8 +55,10 @@ public class Controller_SelectLevel
 
     public void initialize()
     {
-        hbox.getChildren().clear();
+        rows = new ArrayList<>();
+        vboxContainer.getChildren().clear();
         int colorIndex = 1;
+        int currentRow = 0;
         try
         {
             JSONParser parser = new JSONParser();
@@ -60,13 +68,18 @@ public class Controller_SelectLevel
             int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
             getProgress(numberOfLevels);
 
-
+            int numberOfRows = (numberOfLevels / 10) + 1;
+            //make hbox for each row
+            for (int i = 0; i < numberOfRows; i++)
+            {
+                HBox row = new HBox();
+                row.setSpacing(5);
+                row.setAlignment(Pos.TOP_CENTER);
+                rows.add(row);
+            }
+            vboxContainer.getChildren().add(rows.get(currentRow));
             for (int i = 1; i < numberOfLevels + 1; i++)
             {
-                if (i % 10 == 0)
-                {
-                    colorIndex = 1;
-                }
                 Pane btnPane = new Pane();
                 Button btn = new Button();
                 btn.setUserData(i + "");
@@ -74,6 +87,7 @@ public class Controller_SelectLevel
                 btn.getStyleClass().add("levelBtn");
                 btn.getStyleClass().add("btnColor" + colorIndex);
                 btn.setTextFill(Color.WHITE);
+                btn.setPadding(new Insets(7, 0, 7, 0));
                 btn.setOnAction(event ->
                 {
                     try
@@ -85,12 +99,11 @@ public class Controller_SelectLevel
                         e.printStackTrace();
                     }
                 });
-
                 ImageView checkMark = new ImageView(new Image(new FileInputStream("src/main/res/images/checkmark.png")));
                 checkMark.setPreserveRatio(true);
                 checkMark.setFitWidth(40);
-                checkMark.setX(17);
-                checkMark.setY(19);
+                checkMark.setX(23);
+                checkMark.setY(17);
                 checkMark.setVisible(false);
 
                 if (progression[i - 1])
@@ -99,7 +112,13 @@ public class Controller_SelectLevel
                 }
                 btnPane.getChildren().add(btn);
                 btnPane.getChildren().add(checkMark);
-                hbox.getChildren().add(btnPane);
+                rows.get(currentRow).getChildren().add(btnPane);
+                if (i % 10 == 0)
+                {
+                    colorIndex = 0;
+                    currentRow++;
+                    vboxContainer.getChildren().add(rows.get(currentRow));
+                }
 
                 colorIndex++;
             }

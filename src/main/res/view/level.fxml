@@ -38,9 +38,9 @@
                         <DropShadow/>
                     </effect>
                 </Button>
-                <Text fx:id="levelID" fill="WHITE" layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                      style="-fx-font-size: 36px; -fx-font-weight: bold;" text="Level X" wrappingWidth="120.62109375"
-                      AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.15234375"/>
+                <Text fx:id="levelID" fill="WHITE" layoutX="14.0" layoutY="52.84765625" strokeType="OUTSIDE"
+                      strokeWidth="0.0" style="-fx-font-size: 36px; -fx-font-weight: bold;" text="Level X"
+                      wrappingWidth="180.62109375" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0"/>
             </children>
         </AnchorPane>
     </top>

@@ -4,7 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="900.0"
@@ -28,11 +28,10 @@
               text="Levely" BorderPane.alignment="CENTER"/>
     </top>
     <center>
-        <HBox fx:id="hbox" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0"
-              BorderPane.alignment="CENTER">
+        <VBox fx:id="vboxContainer" alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="TOP_CENTER">
             <BorderPane.margin>
                 <Insets top="30.0"/>
             </BorderPane.margin>
-        </HBox>
+        </VBox>
     </center>
 </BorderPane>
