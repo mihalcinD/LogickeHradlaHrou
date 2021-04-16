@@ -47,10 +47,6 @@
     -fx-background-color: #d55c00;
 }
 
-.levelBtnPassed {
-    -fx-background-color: #05cb05;
-}
-
 .combo-box {
     -fx-focus-color: transparent;
     -fx-background-insets: -1, -1, -1, -1;

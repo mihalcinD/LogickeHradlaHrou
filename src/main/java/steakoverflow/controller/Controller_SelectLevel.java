@@ -50,6 +50,7 @@ public class Controller_SelectLevel
     public void initialize()
     {
         hbox.getChildren().clear();
+        int colorIndex = 1;
         try
         {
             JSONParser parser = new JSONParser();
@@ -62,11 +63,16 @@ public class Controller_SelectLevel
 
             for (int i = 1; i < numberOfLevels + 1; i++)
             {
+                if (i % 10 == 0)
+                {
+                    colorIndex = 1;
+                }
                 Pane btnPane = new Pane();
                 Button btn = new Button();
                 btn.setUserData(i + "");
                 btn.setText(i + "");
                 btn.getStyleClass().add("levelBtn");
+                btn.getStyleClass().add("btnColor" + colorIndex);
                 btn.setTextFill(Color.WHITE);
                 btn.setOnAction(event ->
                 {
@@ -94,6 +100,8 @@ public class Controller_SelectLevel
                 btnPane.getChildren().add(btn);
                 btnPane.getChildren().add(checkMark);
                 hbox.getChildren().add(btnPane);
+
+                colorIndex++;
             }
 
         }
