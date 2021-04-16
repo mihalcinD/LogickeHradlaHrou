@@ -10,11 +10,17 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import main.java.steakoverflow.Main;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import javax.print.attribute.standard.Media;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 public class Controller_Settings
@@ -125,7 +131,6 @@ public class Controller_Settings
 
     }
 
-
     public void exitGame(ActionEvent actionEvent)
     {
         System.exit(0);
@@ -136,4 +141,51 @@ public class Controller_Settings
         alertBox.setVisible(false);
         applyBtn.setVisible(false);
     }
+
+    public void resetProgress()
+    {
+        try
+        {
+            int numberOfLevels = getNumberOfLevels();
+
+            JSONObject jsonObject = new JSONObject();
+            JSONArray jsonArray = new JSONArray();
+
+            for (int i = 0; i < numberOfLevels; i++)
+            {
+                jsonArray.add(false);
+            }
+
+            jsonObject.put("progress", jsonArray);
+            Files.write(Paths.get("src/main/res/Progression.json"), jsonObject.toJSONString().getBytes());
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public int getNumberOfLevels()
+    {
+        int numberOfLevels = 0;
+        JSONParser parser = new JSONParser();
+
+        try
+        {
+            Object obj = parser.parse(new FileReader("src/main/res/Progression.json"));
+            JSONObject object = (JSONObject) obj;
+            JSONArray jsonArray = (JSONArray) object.get("progress");
+
+            numberOfLevels = jsonArray.size();
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return numberOfLevels;
+
+    }
+
 }

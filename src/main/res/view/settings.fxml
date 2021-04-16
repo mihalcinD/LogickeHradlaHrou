@@ -11,8 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="700.0" minWidth="900.0"
+            style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
+            xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="main.java.steakoverflow.controller.Controller_Settings">
     <top>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 48; -fx-font-weight: bold;"
@@ -88,6 +89,16 @@
                 <Button mnemonicParsing="false" onAction="#switchSceneToMenu"
                         style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Menu"
                         textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </Button>
+                <Button layoutX="169.0" mnemonicParsing="false" onAction="#resetProgress"
+                        style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;"
+                        text="Reset Progress" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>

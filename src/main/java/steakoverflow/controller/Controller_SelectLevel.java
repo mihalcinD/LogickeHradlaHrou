@@ -5,13 +5,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import main.java.steakoverflow.Main;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -71,12 +73,6 @@ public class Controller_SelectLevel
                 btn.setUserData(i + "");
                 btn.setText(i + "");
                 btn.getStyleClass().add("levelBtn");
-
-                if (progression[i - 1])
-                {
-                    btn.setText("DONE");
-                }
-
                 btn.setTextFill(Color.WHITE);
                 btn.setOnAction(event ->
                 {
@@ -90,6 +86,21 @@ public class Controller_SelectLevel
                     }
                 });
                 hbox.getChildren().add(btn);
+
+                if (progression[i - 1])
+                {
+                    FileInputStream input = new FileInputStream("src/main/res/images/checkmark.png");
+                    Image img = new Image(input);
+                    //BackgroundImage bgImg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,  BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+                    //Background background = new Background(bgImg);
+                    //btn.setBackground(background);
+                    ImageView imageView = new ImageView();
+                    imageView.setImage(img);
+                    imageView.setPreserveRatio(true);
+                    imageView.setFitWidth(30);
+                    hbox.getChildren().add(imageView);
+
+                }
             }
 
         }
