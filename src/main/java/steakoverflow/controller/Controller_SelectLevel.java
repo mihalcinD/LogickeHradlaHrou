@@ -27,7 +27,6 @@ public class Controller_SelectLevel
     {
         Main.activeWindow = 0;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
-
     }
 
     public void switchSceneToLevel(ActionEvent event) throws IOException
@@ -80,12 +79,14 @@ public class Controller_SelectLevel
                         e.printStackTrace();
                     }
                 });
+
                 ImageView checkMark = new ImageView(new Image(new FileInputStream("src/main/res/images/checkmark.png")));
                 checkMark.setPreserveRatio(true);
                 checkMark.setFitWidth(40);
                 checkMark.setX(17);
                 checkMark.setY(19);
                 checkMark.setVisible(false);
+
                 if (progression[i - 1])
                 {
                     checkMark.setVisible(true);

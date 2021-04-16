@@ -7,6 +7,46 @@
     -fx-background-radius: 0;
 }
 
+.btnColor1 {
+    -fx-background-color: #ff9849;
+}
+
+.btnColor2 {
+    -fx-background-color: #ff923f;
+}
+
+.btnColor3 {
+    -fx-background-color: #ff892f;
+}
+
+.btnColor4 {
+    -fx-background-color: #fe8222;
+}
+
+.btnColor5 {
+    -fx-background-color: #ff7b15;
+}
+
+.btnColor6 {
+    -fx-background-color: #ff7309;
+}
+
+.btnColor7 {
+    -fx-background-color: #fb6d00;
+}
+
+.btnColor8 {
+    -fx-background-color: #ee6700;
+}
+
+.btnColor9 {
+    -fx-background-color: #e16200;
+}
+
+.btnColor10 {
+    -fx-background-color: #d55c00;
+}
+
 .levelBtnPassed {
     -fx-background-color: #05cb05;
 }
