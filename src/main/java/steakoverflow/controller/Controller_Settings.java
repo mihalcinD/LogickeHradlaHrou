@@ -37,14 +37,13 @@ public class Controller_Settings
     {
         Main.activeWindow = 0;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
-
-
         sliderMusic.setValue(Main.volumeMusic);
         sliderSounds.setValue(Main.volumeSounds);
         volumeMusic.setText(String.valueOf(Main.volumeMusic));
         volumeSounds.setText(String.valueOf(Main.volumeSounds));
         Main.player.setVolume((double) Main.volumeMusic / 100);
         applyBtn.setVisible(false);
+        resetProgress = false;
 
     }
 

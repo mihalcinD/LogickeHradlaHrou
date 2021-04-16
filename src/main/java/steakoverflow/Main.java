@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -65,7 +66,7 @@ public class Main extends Application
         if (fullscreen)
         {
             primaryStage.setFullScreen(true);
-            primaryStage.setFullScreenExitHint("Stlačením ESC zmenšíte okno na defaultné rozmery (" + width + "x" + height + ")");
+            primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         }
         else if (fullscreenWindowed)
             primaryStage.setMaximized(true);

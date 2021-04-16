@@ -91,7 +91,7 @@ public class Controller_SelectLevel
 
                 if (progression[i - 1])
                 {
-                    FileInputStream input = new FileInputStream("src/main/res/images/checkmark.png");
+                   /* FileInputStream input = new FileInputStream("src/main/res/images/checkmark.png");
                     Image img = new Image(input);
                     //BackgroundImage bgImg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,  BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
                     //Background background = new Background(bgImg);
@@ -100,7 +100,8 @@ public class Controller_SelectLevel
                     imageView.setImage(img);
                     imageView.setPreserveRatio(true);
                     imageView.setFitWidth(30);
-                    hbox.getChildren().add(imageView);
+                    hbox.getChildren().add(imageView);*/
+                    btn.getStyleClass().add("levelBtnPassed");
 
                 }
             }
