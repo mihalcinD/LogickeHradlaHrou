@@ -31,6 +31,7 @@ public class Controller_Settings
     public Slider sliderMusic, sliderSounds;
     public Text volumeMusic, volumeSounds;
     private boolean needRestart = false;
+    private boolean resetProgress = false;
 
     public void switchSceneToMenu(ActionEvent event) throws IOException
     {
@@ -74,6 +75,7 @@ public class Controller_Settings
 
     public void saveSettings()
     {
+        if (resetProgress) deleteProgress();
         try
         {
             Main.volumeMusic = (int) sliderMusic.getValue();
@@ -143,6 +145,12 @@ public class Controller_Settings
     }
 
     public void resetProgress()
+    {
+        resetProgress = true;
+        applyBtn.setVisible(true);
+    }
+
+    public void deleteProgress()
     {
         try
         {

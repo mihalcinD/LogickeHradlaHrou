@@ -11,9 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="700.0" minWidth="900.0"
-            style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
-            xmlns="http://javafx.com/javafx/11.0.1"
+<BorderPane minHeight="700.0" minWidth="900.0" style="-fx-background-color: #333845;" stylesheets="@../css/main.css"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.java.steakoverflow.controller.Controller_Settings">
     <top>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 48; -fx-font-weight: bold;"
@@ -77,6 +76,15 @@
                         </HBox>
                     </children>
                 </VBox>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                      style="-fx-font-size: 36; -fx-font-weight: bold;" text="Progres"/>
+                <Button mnemonicParsing="false" onAction="#resetProgress" prefWidth="200.0"
+                        style="-fx-background-color: #FF740A; -fx-background-radius: 0; -fx-font-size: 14; -fx-font-weight: bold;"
+                        text="Zresetovať progres" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
             </children>
             <BorderPane.margin>
                 <Insets top="40.0"/>
@@ -89,16 +97,6 @@
                 <Button mnemonicParsing="false" onAction="#switchSceneToMenu"
                         style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;" text="Menu"
                         textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                </Button>
-                <Button layoutX="169.0" mnemonicParsing="false" onAction="#resetProgress"
-                        style="-fx-background-color: FF8048; -fx-font-size: 36px; -fx-font-weight: bold;"
-                        text="Reset Progress" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
