@@ -12,18 +12,10 @@ import javafx.scene.paint.Color;
 import main.java.steakoverflow.Main;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
-
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 public class Controller_SelectLevel
 {
@@ -59,7 +51,6 @@ public class Controller_SelectLevel
     public void initialize()
     {
         hbox.getChildren().clear();
-
         try
         {
             JSONParser parser = new JSONParser();
@@ -69,8 +60,10 @@ public class Controller_SelectLevel
             int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
             getProgress(numberOfLevels);
 
+
             for (int i = 1; i < numberOfLevels + 1; i++)
             {
+                Pane btnPane = new Pane();
                 Button btn = new Button();
                 btn.setUserData(i + "");
                 btn.setText(i + "");
@@ -87,23 +80,19 @@ public class Controller_SelectLevel
                         e.printStackTrace();
                     }
                 });
-                hbox.getChildren().add(btn);
-
+                ImageView checkMark = new ImageView(new Image(new FileInputStream("src/main/res/images/checkmark.png")));
+                checkMark.setPreserveRatio(true);
+                checkMark.setFitWidth(40);
+                checkMark.setX(17);
+                checkMark.setY(19);
+                checkMark.setVisible(false);
                 if (progression[i - 1])
                 {
-                   /* FileInputStream input = new FileInputStream("src/main/res/images/checkmark.png");
-                    Image img = new Image(input);
-                    //BackgroundImage bgImg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,  BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-                    //Background background = new Background(bgImg);
-                    //btn.setBackground(background);
-                    ImageView imageView = new ImageView();
-                    imageView.setImage(img);
-                    imageView.setPreserveRatio(true);
-                    imageView.setFitWidth(30);
-                    hbox.getChildren().add(imageView);*/
-                    btn.getStyleClass().add("levelBtnPassed");
-
+                    checkMark.setVisible(true);
                 }
+                btnPane.getChildren().add(btn);
+                btnPane.getChildren().add(checkMark);
+                hbox.getChildren().add(btnPane);
             }
 
         }

@@ -28,7 +28,7 @@
               text="Levely" BorderPane.alignment="CENTER"/>
     </top>
     <center>
-        <HBox fx:id="hbox" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0"
+        <HBox fx:id="hbox" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0"
               BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets top="30.0"/>
