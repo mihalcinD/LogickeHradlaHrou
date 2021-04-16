@@ -58,6 +58,8 @@ public class Controller_SelectLevel
 
     public void initialize()
     {
+        hbox.getChildren().clear();
+
         try
         {
             JSONParser parser = new JSONParser();

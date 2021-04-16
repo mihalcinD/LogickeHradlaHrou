@@ -51,7 +51,7 @@ public class Main extends Application
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../res/view/" + paths[i] + ".fxml"));
             roots[i] = loader.load();
 
-            if (i == 2)
+            if (i == 2 || i == 1)
             {
                 //Controller_Level controller_level = loader.getController();
                 roots[i].setUserData(loader);

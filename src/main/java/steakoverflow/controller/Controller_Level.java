@@ -71,6 +71,12 @@ public class Controller_Level implements Initializable
     {
         Main.activeWindow = 1;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
+
+        //Get controller of selectLevel scene
+        FXMLLoader loader = (FXMLLoader) Main.roots[Main.activeWindow].getUserData();
+        Controller_SelectLevel controller = loader.getController();
+        //re-generate scene
+        controller.initialize();
     }
 
     public void setId(int id)
