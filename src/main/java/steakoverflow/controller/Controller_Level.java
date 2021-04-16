@@ -28,6 +28,8 @@ import javafx.scene.text.Text;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
@@ -369,6 +371,7 @@ public class Controller_Level implements Initializable
                 isInPause = true;
                 hideControls();
                 playSound("success");
+                updateProgress();
 
             }
             else
@@ -377,6 +380,58 @@ public class Controller_Level implements Initializable
                 playSound("error");
             }
         }
+    }
+
+    private void updateProgress()
+    {
+        try
+        {
+            boolean[] progression = getProgress();
+            progression[id - 1] = true;
+
+            JSONObject jsonObject = new JSONObject();
+            JSONArray jsonArray = new JSONArray();
+
+            for (boolean value : progression)
+            {
+                jsonArray.add(value);
+            }
+
+
+            jsonObject.put("progress", jsonArray);
+            Files.write(Paths.get("src/main/res/Progression.json"), jsonObject.toJSONString().getBytes());
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    public boolean[] getProgress()
+    {
+        boolean[] progression = new boolean[numberOfLevels];
+        JSONParser parser = new JSONParser();
+
+        try
+        {
+            Object obj = parser.parse(new FileReader("src/main/res/Progression.json"));
+            JSONObject object = (JSONObject) obj;
+            JSONArray jsonArray = (JSONArray) object.get("progress");
+
+            for (int i = 0; i < jsonArray.size(); i++)
+            {
+                progression[i] = Boolean.parseBoolean(jsonArray.get(i).toString());
+            }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return progression;
+
     }
 
     private void playSound(String sound)

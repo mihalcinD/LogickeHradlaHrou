@@ -5,21 +5,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import main.java.steakoverflow.Main;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Controller_SelectLevel
 {
 
     public HBox hbox;
+    private boolean[] progression;
 
     public void switchSceneToMenu(ActionEvent event) throws IOException
     {
@@ -55,6 +63,7 @@ public class Controller_SelectLevel
             JSONObject jsonObject = (JSONObject) obj;
 
             int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
+            getProgress(numberOfLevels);
 
             for (int i = 1; i < numberOfLevels + 1; i++)
             {
@@ -62,6 +71,12 @@ public class Controller_SelectLevel
                 btn.setUserData(i + "");
                 btn.setText(i + "");
                 btn.getStyleClass().add("levelBtn");
+
+                if (progression[i - 1])
+                {
+                    btn.setText("DONE");
+                }
+
                 btn.setTextFill(Color.WHITE);
                 btn.setOnAction(event ->
                 {
@@ -84,5 +99,31 @@ public class Controller_SelectLevel
         }
 
     }
+
+    public void getProgress(int numberOfLevels)
+    {
+        JSONParser parser = new JSONParser();
+
+        try
+        {
+            Object obj = parser.parse(new FileReader("src/main/res/Progression.json"));
+            JSONObject object = (JSONObject) obj;
+            JSONArray jsonArray = (JSONArray) object.get("progress");
+
+            progression = new boolean[numberOfLevels];
+
+            for (int i = 0; i < jsonArray.size(); i++)
+            {
+                progression[i] = Boolean.parseBoolean(jsonArray.get(i).toString());
+            }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
