@@ -1,3 +1,5 @@
+/*---- SELECT LEVEL SCREEN ----*/
+
 .levelBtn {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
@@ -7,7 +9,6 @@
     -fx-background-radius: 0;
     -fx-pref-width: 50;
 }
-
 .btnColor1 {
     -fx-background-color: #ff9849;
 }
@@ -54,6 +55,8 @@
     -fx-pref-width: 200px;
 }
 
+/*---- SETTINGS SCREEN ----*/
+
 .combo-box .list-cell {
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -97,13 +100,6 @@
     -fx-background-color: #172332;
 }
 
-.passBtns {
-    -fx-background-color: #FF8048;
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-}
-
 .slider .track {
     -fx-background-color: #FF740A;
     -fx-background-radius: 0;
@@ -116,4 +112,53 @@
     -fx-border-radius: 0;
     -fx-background-radius: 0;
     -fx-background-color: #172332;
+}
+
+/*---- GAMEPLAY SCREEN ----*/
+
+.passText {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #FFFFFF;
+}
+
+.timeText {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-fill: #FFFFFF;
+}
+
+.attemptsText {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-fill: #FFFFFF;
+}
+
+.menuText {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-fill: #797979;
+}
+
+.passBtns {
+    -fx-background-color: #FF8048;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.understandBtn {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-fill: #696969;
+}
+
+.understandBtn:hover {
+
+    -fx-fill: #aeaeae;
+}
+
+.hintText {
+    -fx-font-size: 16px;
+    -fx-fill: #FFFFFF;
 }
