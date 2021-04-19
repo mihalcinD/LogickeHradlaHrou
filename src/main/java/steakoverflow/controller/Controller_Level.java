@@ -60,6 +60,7 @@ public class Controller_Level implements Initializable
     private double time_inPause_sec = 0;
     private boolean canCheck = true;
     private ArrayList<Node> hints = new ArrayList<>();
+    private ArrayList<Text> understandTexts = new ArrayList<>();
 
     public void switchSceneToMenu()
     {
@@ -311,6 +312,7 @@ public class Controller_Level implements Initializable
         understandText.setCursor(Cursor.HAND);
         understandText.getStyleClass().add("understandBtn");
         hintPanel.add(understandText, 0, 1);
+        understandTexts.add(understandText);
         GridPane.setHalignment(understandText, HPos.RIGHT);
 
         try
@@ -615,6 +617,11 @@ public class Controller_Level implements Initializable
     private void showPassWindow()
     {
         blurElements();
+        for (Text text : understandTexts)
+        {
+            text.getStyleClass().add("understandBtnPas");
+            text.setCursor(Cursor.DEFAULT);
+        }
         createVbox();
         long finish_time = System.nanoTime();
         double time_elapsed_sec = ((double) (finish_time - start_time) / 10000000) - time_inPause_sec;
@@ -724,7 +731,11 @@ public class Controller_Level implements Initializable
     public void showPauseMenu()
     {
         long start_time_pause = System.nanoTime();
-
+        for (Text text : understandTexts)
+        {
+            text.getStyleClass().add("understandBtnPas");
+            text.setCursor(Cursor.DEFAULT);
+        }
         isInPause = true;
         createVbox();
         Text pause_text = new Text("Pauza");
@@ -742,6 +753,11 @@ public class Controller_Level implements Initializable
             unblurElements();
             isInPause = false;
             vbox.setVisible(false);
+            for (Text text : understandTexts)
+            {
+                text.getStyleClass().remove("understandBtnPas");
+                text.setCursor(Cursor.HAND);
+            }
 
         });
 
