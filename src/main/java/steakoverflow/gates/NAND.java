@@ -14,7 +14,11 @@ public class NAND extends Gate
 
         try
         {
-            this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/Nand.png")));
+            if (getNmbInput() == 2)
+                this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/Nand.png")));
+            else
+                this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/Nand3.png")));
+
         }
         catch (FileNotFoundException e)
         {

@@ -180,7 +180,7 @@ public class Controller_Level implements Initializable
                             cable.setStroke(Color.web("#CA5801"));
                             cable.setStrokeWidth(7.0);
                             cable.setStartX(((entity.getImg().getX() / 100) * playArea.getWidth()) - (entity.getImg().getFitWidth() / 2 - gateXPositionOfClamp));
-                            if (((Gate) entity).getInputIDs().length != 1)
+                            if (((Gate) entity).getNmbInput() != 1)
                             {
                                 switch (j)
                                 {
@@ -188,7 +188,7 @@ public class Controller_Level implements Initializable
                                         cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOf1stClamp);
                                         break;
                                     case 2:
-                                        if (((Gate) entity).getInputIDs().length == 2)
+                                        if (((Gate) entity).getNmbInput() == 2)
                                         {
                                             cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOf2ndClamp);
                                         }
