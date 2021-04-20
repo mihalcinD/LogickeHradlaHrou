@@ -13,14 +13,21 @@ public class AND extends Gate
     {
         super(idEntity, type, tableX, tableY, nmbInput, inputIDs);
 
+
         try
         {
-            this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/And.png")));
+            if (getNmbInput() == 2)
+            {
+                this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/And.png")));
+            }
+            else this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/And3.png")));
         }
         catch (FileNotFoundException e)
         {
             e.printStackTrace();
         }
+
+
     }
 
     @Override

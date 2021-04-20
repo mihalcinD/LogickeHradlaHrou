@@ -14,7 +14,10 @@ public class XOR extends Gate
 
         try
         {
-            this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/XOR.png")));
+            if (getNmbInput() == 2)
+                this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/XOR.png")));
+            else
+                this.img.setImage(new Image(new FileInputStream("src/main/res/images/gates/XOR3.png")));
         }
         catch (FileNotFoundException e)
         {
