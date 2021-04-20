@@ -56,7 +56,7 @@ public class Controller_Level implements Initializable
     private long start_time;
     private int attempts, difficulty;
     private final double multiplier_sec = 30;
-    private VBox vbox;
+    private VBox menuBox;
     private double time_inPause_sec = 0;
     private boolean canCheck = true;
     private ArrayList<Node> hints = new ArrayList<>();
@@ -100,6 +100,7 @@ public class Controller_Level implements Initializable
         Line cable = null;
         try
         {
+            //get data from json
             Object obj = parser.parse(new FileReader("src/main/res/Logicke_hradla_levels.json"));
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -107,13 +108,14 @@ public class Controller_Level implements Initializable
             JSONObject level = (JSONObject) jsonObject.get("level" + id);
             difficulty = Integer.parseInt(level.get("difficulty").toString());
 
+            //generate each element to playarea and add to collection
             for (int i = 1; i < Integer.parseInt(level.get("elementNmb").toString()) + 1; i++)
             {
                 JSONArray element = (JSONArray) level.get("element" + i);
 
                 Entity entity = null;
 
-
+                //make object
                 switch (element.get(0).toString())
                 {
                     case "input":
@@ -147,18 +149,19 @@ public class Controller_Level implements Initializable
 
                 if (entity != null)
                 {
-
                     entity.getImg().setViewOrder(0.0);
                     if (!(entity instanceof Gate))
                     {
                         //inputs and outputs set different width
                         entity.getImg().setFitWidth(102);
                     }
-                    playArea.getChildren().add(entity.getImg());
 
-                    generateElementToPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), entity.getImg().getFitWidth(), entity.getImg().getFitHeight(), Double.parseDouble(element.get(1).toString()), Double.parseDouble(element.get(2).toString()));
+                    //add to panel, set position, add to list
+                    playArea.getChildren().add(entity.getImg());
+                    setPositionElementOnPlayArea(playArea.getWidth(), playArea.getHeight(), entity.getImg(), entity.getImg().getFitWidth(), entity.getImg().getFitHeight(), Double.parseDouble(element.get(1).toString()), Double.parseDouble(element.get(2).toString()));
                     entities.add(entity);
 
+                    //generating cables from gates
                     if (entity instanceof Gate)
                     {
                         int gateXPositionOfClamp = 9;
@@ -174,12 +177,18 @@ public class Controller_Level implements Initializable
                         int gateXPositionOfOutputClamp = 9;
                         int gateYPositionOfOutputClamp = 44;
 
-                        for (int j = 1; j < ((Gate) entity).getInputIDs().length + 1; j++)
+                        //get x y position of each input and set start x y to cable
+                        for (int j = 1; j < ((Gate) entity).getNmbInput() + 1; j++)
                         {
                             cable = new Line();
                             cable.setStroke(Color.web("#CA5801"));
                             cable.setStrokeWidth(7.0);
+                            cable.setStrokeLineCap(StrokeLineCap.ROUND);
+
+                            //set startX of cable
                             cable.setStartX(((entity.getImg().getX() / 100) * playArea.getWidth()) - (entity.getImg().getFitWidth() / 2 - gateXPositionOfClamp));
+
+                            //according to the number of inputs set startY to cable
                             if (((Gate) entity).getNmbInput() != 1)
                             {
                                 switch (j)
@@ -207,11 +216,14 @@ public class Controller_Level implements Initializable
                                 cable.setStartY(((entity.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOfMiddleClamp);
                             }
 
+
                             Entity entityToJoin = entities.get(Integer.parseInt(((Gate) entity).getInputIDs()[j - 1]) - 1);
 
+                            //set end XY of cable
                             if (entityToJoin instanceof Input)
                             {
                                 cable.setEndX(((entityToJoin.getImg().getX() / 100) * playArea.getWidth()) + (entityToJoin.getImg().getFitWidth() / 2 - inputXPositionOfClamp));
+
                                 if (((Input) entityToJoin).isLocked())
                                 {
                                     cable.setEndY(((entityToJoin.getImg().getY() / 100) * playArea.getHeight()) + inputLockedYPositionOfClamp);
@@ -228,13 +240,13 @@ public class Controller_Level implements Initializable
                             }
 
                             playArea.getChildren().add(cable);
-                            cable.setStrokeLineCap(StrokeLineCap.ROUND);
                             cables.add(cable);
                         }
 
                     }
                     else if (entity instanceof Output)
                     {
+                        //generating cables from outputs
                         int outputXPositionOfClamp = 12;
                         int outputYPositionOfClamp = 22;
                         int outputLockedYPositionOfClamp = 34;
@@ -244,6 +256,8 @@ public class Controller_Level implements Initializable
                         cable = new Line();
                         cable.setStroke(Color.web("#CA5801"));
                         cable.setStrokeWidth(7.0);
+                        cable.setStrokeLineCap(StrokeLineCap.ROUND);
+
                         cable.setStartX(((entity.getImg().getX() / 100) * playArea.getWidth()) - (entity.getImg().getFitWidth() / 2 - outputXPositionOfClamp));
 
                         if (((Output) entity).isLocked())
@@ -258,9 +272,7 @@ public class Controller_Level implements Initializable
                         cable.setEndX(((entityToJoin.getImg().getX() / 100) * playArea.getWidth()) + (entityToJoin.getImg().getFitWidth() / 2 - gateXPositionOfClamp));
                         cable.setEndY(((entityToJoin.getImg().getY() / 100) * playArea.getHeight()) + gateYPositionOfMiddleClamp);
 
-
                         playArea.getChildren().add(cable);
-                        cable.setStrokeLineCap(StrokeLineCap.ROUND);
                         cables.add(cable);
                     }
                 }
@@ -271,6 +283,7 @@ public class Controller_Level implements Initializable
             e.printStackTrace();
         }
 
+        //generate hints to playarea Lvl1
         if (id == 1)
         {
             String text = "Hradlo NOT je jedným zo základných kombinačných logických obvodov, ktorého výstup je negáciou vstupu.";
@@ -280,12 +293,13 @@ public class Controller_Level implements Initializable
             text = "Kliknutím na zelenú šípku overíte svoje riešenie";
             generateHint(text, 0.1, 0.67, 285, 108, 135);
         }
+
         attempts = 0;
         // start counting time
         start_time = System.nanoTime();
     }
 
-    private void generateElementToPlayArea(double widthPane, double heightPane, Node element, double widthElement, double heightElement, double percentageFromLeft, double percentageFromTop)
+    private void setPositionElementOnPlayArea(double widthPane, double heightPane, Node element, double widthElement, double heightElement, double percentageFromLeft, double percentageFromTop)
     {
         AnchorPane.setLeftAnchor(element, (widthPane * (percentageFromLeft / 100)) - (widthElement / 2));
         AnchorPane.setTopAnchor(element, (heightPane * (percentageFromTop / 100)) - (heightElement / 2));
@@ -294,11 +308,13 @@ public class Controller_Level implements Initializable
     private void generateHint(String text, double fromLeft, double fromTop, int handX, int handY, int rotate)
     {
         Pane div = new Pane();
+        //main panel with text and button
         GridPane hintPanel = new GridPane();
         hintPanel.setStyle("-fx-background-color: rgba(0,0,0,0.35);");
         hintPanel.setPadding(new Insets(12, 12, 12, 12));
         hintPanel.setVgap(15);
         div.getChildren().add(hintPanel);
+
         Text hintText = new Text(text);
         hintText.getStyleClass().add("hintText");
         hintText.setWrappingWidth(270);
@@ -317,6 +333,7 @@ public class Controller_Level implements Initializable
 
         try
         {
+            //generate pointing hand to div
             ImageView hand = new ImageView(new Image(new FileInputStream("src/main/res/images/hand.png")));
             hand.setPreserveRatio(true);
             hand.setFitWidth(40);
@@ -332,12 +349,15 @@ public class Controller_Level implements Initializable
 
         playArea.getChildren().add(div);
         hints.add(div);
+
+        //set properly position
         AnchorPane.setTopAnchor(div, playArea.getHeight() * fromTop);
         AnchorPane.setLeftAnchor(div, playArea.getWidth() * fromLeft);
     }
 
     private void hideHint(Node hint)
     {
+        //animation to hide hint
         ScaleTransition st = new ScaleTransition(Duration.millis(300), hint);
         st.setByX(-1);
         st.setByY(-1);
@@ -368,10 +388,12 @@ public class Controller_Level implements Initializable
     {
         try
         {
+            //generate big red cross
             ImageView x = new ImageView(new Image(new FileInputStream("src/main/res/images/wrong.png")));
             x.setPreserveRatio(true);
             x.setFitWidth(100);
             playArea.getChildren().add(x);
+
             ScaleTransition st = new ScaleTransition(Duration.millis(200), x);
             st.setByX(2);
             st.setByY(2);
@@ -381,6 +403,7 @@ public class Controller_Level implements Initializable
                 @Override
                 public void handle(ActionEvent actionEvent)
                 {
+                    //wait and then hide image
                     try
                     {
                         TimeUnit.MILLISECONDS.sleep(500);
@@ -456,6 +479,7 @@ public class Controller_Level implements Initializable
 
     private void updateProgress()
     {
+        //update information about progress in json
         try
         {
             boolean[] progression = getProgress();
@@ -482,6 +506,7 @@ public class Controller_Level implements Initializable
 
     public boolean[] getProgress()
     {
+        //get current progress from json
         boolean[] progression = new boolean[numberOfLevels];
         JSONParser parser = new JSONParser();
 
@@ -602,27 +627,31 @@ public class Controller_Level implements Initializable
         pauseBtn.setVisible(true);
     }
 
-    private void createVbox()
+    private void createMenubox()
     {
-        vbox = new VBox();
-        vbox.setAlignment(Pos.TOP_CENTER);
-        vbox.setStyle("-fx-background-color: rgba(0,0,0,0.35);");
-        vbox.setPrefWidth(315);
-        vbox.setSpacing(10);
-        vbox.setPadding(new Insets(10, 10, 10, 10));
-        AnchorPane.setLeftAnchor(vbox, ((playArea.getWidth() * 0.5) - 157.5));
-        AnchorPane.setTopAnchor(vbox, 50.0);
+        //create vbox, using for pass window or pause menu
+        menuBox = new VBox();
+        menuBox.setAlignment(Pos.TOP_CENTER);
+        menuBox.setStyle("-fx-background-color: rgba(0,0,0,0.35);");
+        menuBox.setPrefWidth(315);
+        menuBox.setSpacing(10);
+        menuBox.setPadding(new Insets(10, 10, 10, 10));
+        AnchorPane.setLeftAnchor(menuBox, ((playArea.getWidth() * 0.5) - 157.5));
+        AnchorPane.setTopAnchor(menuBox, 50.0);
     }
 
     private void showPassWindow()
     {
         blurElements();
+
+        //edit hints windows
         for (Text text : understandTexts)
         {
             text.getStyleClass().add("understandBtnPas");
             text.setCursor(Cursor.DEFAULT);
         }
-        createVbox();
+
+        createMenubox();
         long finish_time = System.nanoTime();
         double time_elapsed_sec = ((double) (finish_time - start_time) / 10000000) - time_inPause_sec;
         time_elapsed_sec = (double) Math.round(time_elapsed_sec) / 100;
@@ -630,6 +659,7 @@ public class Controller_Level implements Initializable
 
         try
         {
+            //calculate success rate and set the number of stars
             if ((multiplier_sec * difficulty) - time_elapsed_sec >= 0)
             {
                 if (attempts == 1)
@@ -664,6 +694,8 @@ public class Controller_Level implements Initializable
         int time_elapsed_min = (int) time_elapsed_sec / 60;
         Text pass_text = new Text("LEVEL " + id + " zvládnutý");
         Text time_text;
+
+        //if time is over 59 seconds, change formatting
         if (time_elapsed_min > 0)
         {
             time_elapsed_sec = time_elapsed_sec - (time_elapsed_min * 60);
@@ -674,6 +706,7 @@ public class Controller_Level implements Initializable
             time_text = new Text("Celkový čas: " + time_elapsed_sec + "s");
         }
 
+        //styling passmenu
         Text attempts_text = new Text("Počet pokusov: " + attempts);
         Text menu_text = new Text("Menu");
         HBox btns_hbox = new HBox();
@@ -682,19 +715,21 @@ public class Controller_Level implements Initializable
         pass_text.getStyleClass().add("passText");
         time_text.getStyleClass().add("timeText");
         attempts_text.getStyleClass().add("attemptsText");
+
         menu_text.getStyleClass().add("menuText");
         menu_text.setCursor(Cursor.HAND);
         menu_text.setOnMouseClicked(mouseEvent ->
         {
             switchSceneToMenu();
         });
+
         btns_hbox.setSpacing(20);
         btns_hbox.setAlignment(Pos.CENTER);
         btns_hbox.setPadding(new Insets(20, 0, 0, 0));
         btns_hbox.getChildren().add(reset_btn);
         btns_hbox.getChildren().add(continue_btn);
+
         reset_btn.getStyleClass().add("passBtns");
-        continue_btn.getStyleClass().add("passBtns");
         reset_btn.setPrefWidth(137);
         reset_btn.setPrefHeight(46);
         reset_btn.setCursor(Cursor.HAND);
@@ -702,6 +737,7 @@ public class Controller_Level implements Initializable
         {
             renderElements();
         });
+        continue_btn.getStyleClass().add("passBtns");
         continue_btn.setPrefWidth(137);
         continue_btn.setPrefHeight(46);
         continue_btn.setCursor(Cursor.HAND);
@@ -719,25 +755,29 @@ public class Controller_Level implements Initializable
 
         });
 
-        vbox.getChildren().add(pass_text);
-        vbox.getChildren().add(attempts_text);
-        vbox.getChildren().add(time_text);
-        vbox.getChildren().add(stars);
-        vbox.getChildren().add(btns_hbox);
-        vbox.getChildren().add(menu_text);
-        playArea.getChildren().add(vbox);
+        menuBox.getChildren().add(pass_text);
+        menuBox.getChildren().add(attempts_text);
+        menuBox.getChildren().add(time_text);
+        menuBox.getChildren().add(stars);
+        menuBox.getChildren().add(btns_hbox);
+        menuBox.getChildren().add(menu_text);
+        playArea.getChildren().add(menuBox);
     }
 
     public void showPauseMenu()
     {
         long start_time_pause = System.nanoTime();
+
+        //edit hints windows
         for (Text text : understandTexts)
         {
             text.getStyleClass().add("understandBtnPas");
             text.setCursor(Cursor.DEFAULT);
         }
+
         isInPause = true;
-        createVbox();
+        createMenubox();
+
         Text pause_text = new Text("Pauza");
         pause_text.setStyle("-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #FFFFFF;");
 
@@ -747,12 +787,13 @@ public class Controller_Level implements Initializable
         continue_btn.setCursor(Cursor.HAND);
         continue_btn.setOnMouseClicked(mouseEvent ->
         {
+            //calcute time in pause
             long finish_time_pause = System.nanoTime();
             time_inPause_sec += ((double) (finish_time_pause - start_time_pause) / 10000000);
             showControls();
             unblurElements();
             isInPause = false;
-            vbox.setVisible(false);
+            menuBox.setVisible(false);
             for (Text text : understandTexts)
             {
                 text.getStyleClass().remove("understandBtnPas");
@@ -778,14 +819,15 @@ public class Controller_Level implements Initializable
         {
             renderElements();
         });
-        vbox.setPadding(new Insets(0, 0, 20, 0));
-        vbox.getChildren().add(pause_text);
-        vbox.getChildren().add(continue_btn);
-        vbox.getChildren().add(reset_btn);
-        vbox.getChildren().add(menu_btn);
+
+        menuBox.setPadding(new Insets(0, 0, 20, 0));
+        menuBox.getChildren().add(pause_text);
+        menuBox.getChildren().add(continue_btn);
+        menuBox.getChildren().add(reset_btn);
+        menuBox.getChildren().add(menu_btn);
         blurElements();
         hideControls();
-        playArea.getChildren().add(vbox);
+        playArea.getChildren().add(menuBox);
 
     }
 
