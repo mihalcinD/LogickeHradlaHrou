@@ -34,7 +34,7 @@ public class NOR extends Gate
             output = Boolean.logicalOr(output, this.getInputValues()[i]);
 
         }
-        this.setValue(output);
+        this.setValue(!output);
 
     }
 }
