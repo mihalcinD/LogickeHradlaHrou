@@ -37,6 +37,7 @@ public class Controller_Settings
     {
         Main.activeWindow = 0;
         Main.rootScene.setRoot(Main.roots[Main.activeWindow]);
+        //if user do not save settings, set previous values
         sliderMusic.setValue(Main.volumeMusic);
         sliderSounds.setValue(Main.volumeSounds);
         volumeMusic.setText(String.valueOf(Main.volumeMusic));
@@ -47,6 +48,7 @@ public class Controller_Settings
 
     }
 
+    //update settings - Resolution (ComboBox)
     public void updateSettings(ActionEvent event)
     {
         if (comboBox.getValue().contains("x"))
@@ -72,6 +74,7 @@ public class Controller_Settings
         needRestart = true;
     }
 
+    //Save all settings
     public void saveSettings()
     {
         if (resetProgress) deleteProgress();
@@ -104,6 +107,7 @@ public class Controller_Settings
         }
     }
 
+    //update settings - Music (Slider)
     public void valueMusicUpdate()
     {
         volumeMusic.setText(String.valueOf((int) sliderMusic.getValue()));
@@ -111,6 +115,7 @@ public class Controller_Settings
         applyBtn.setVisible(true);
     }
 
+    //update settings - Sounds (Slider)
     public void valueSoundsUpdate()
     {
         volumeSounds.setText(String.valueOf((int) sliderSounds.getValue()));
@@ -119,12 +124,13 @@ public class Controller_Settings
 
     public void initialize()
     {
+        //ComboBox set values
         ObservableList<String> options = FXCollections.observableArrayList("900x700", "1280x720", "Fullscreen (windowed)", "Fullscreen");
         comboBox.setItems(options);
         if (Main.fullscreen) comboBox.setValue("Fullscreen");
         else if (Main.fullscreenWindowed) comboBox.setValue("Fullscreen (windowed)");
         else comboBox.setValue(Main.width + "x" + Main.height);
-
+        //Sliders set values
         sliderMusic.setValue(Main.volumeMusic);
         sliderSounds.setValue(Main.volumeSounds);
         volumeMusic.setText(String.valueOf(Main.volumeMusic));
@@ -157,7 +163,7 @@ public class Controller_Settings
 
             JSONObject jsonObject = new JSONObject();
             JSONArray jsonArray = new JSONArray();
-
+            //overwrite json
             for (int i = 0; i < numberOfLevels; i++)
             {
                 jsonArray.add(false);
