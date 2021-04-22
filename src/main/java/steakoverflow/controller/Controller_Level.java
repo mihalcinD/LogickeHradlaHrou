@@ -304,6 +304,7 @@ public class Controller_Level implements Initializable
             case 3:
                 text = "Hradlo OR je jedným zo základných kombinačných logických obvodov, ktorého výstup je logickým súčtom všetkých vstupov.Výstup hradla NOR je negácia logického súčtu všetkých vstupov.";
                 generateHint(text, 0.57, 0.21, false, 10, 130, 180);
+                break;
             case 8:
                 text = "Hradlo XOR je kombinačný logický obvod, ktorého výstup je exkluzívny logický súčet vstupov. Výstup je log.1 len vtedy ak sa hodnoty vstupov líšia. Výstup XNOR je negácia exkluzívneho logického súčtu vstupov.";
                 generateHint(text, 0.57, 0.21, false, 10, 130, 180);
