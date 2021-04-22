@@ -92,6 +92,7 @@ public class Controller_Level implements Initializable
         playArea.getChildren().clear();
         entities.clear();
         cables.clear();
+        hints.clear();
         isInPause = false;
         pauseBtn.setVisible(true);
         checkButton.setVisible(true);
@@ -283,16 +284,38 @@ public class Controller_Level implements Initializable
             e.printStackTrace();
         }
 
-        //generate hints to playarea Lvl1
-        if (id == 1)
+        //generate hints to playarea Lvls
+        String text;
+        switch (id)
         {
-            String text = "Hradlo NOT je jedným zo základných kombinačných logických obvodov, ktorého výstup je negáciou vstupu.";
-            generateHint(text, 0.45, 0.1, 10, 130, 180);
-            text = "Zmeňte hodnotu výstupu kliknutím tak, aby zapojenie sedelo. Keď sa pri vstupe alebo výstupe nacháza zámok, znamená to, že hodnota sa zmeniť NEDÁ";
-            generateHint(text, 0.58, 0.64, 280, -20, 45);
-            text = "Kliknutím na zelenú šípku overíte svoje riešenie";
-            generateHint(text, 0.1, 0.67, 285, 108, 135);
+
+            case 1:
+                text = "Hradlo NOT je jedným zo základných kombinačných logických obvodov, ktorého výstup je negáciou vstupu.";
+                generateHint(text, 0.45, 0.1, true, 10, 130, 180);
+                text = "Zmeňte hodnotu výstupu kliknutím tak, aby zapojenie sedelo. Keď sa pri vstupe alebo výstupe nacháza zámok, znamená to, že hodnota sa zmeniť NEDÁ";
+                generateHint(text, 0.58, 0.64, true, 280, -20, 45);
+                text = "Kliknutím na zelenú šípku overíte svoje riešenie";
+                generateHint(text, 0.1, 0.67, true, 285, 108, 135);
+                break;
+            case 2:
+                text = "Hradlo AND je jedným zo základných kombinačných logických obvodov, ktorého výstup je logickým súčinom všetkých vstupov. Výstup hradla NAND je negáciou logického súčinu všetkých vstupov.";
+                generateHint(text, 0.57, 0.21, false, 10, 130, 180);
+                break;
+            case 3:
+                text = "Hradlo OR je jedným zo základných kombinačných logických obvodov, ktorého výstup je logickým súčtom všetkých vstupov.Výstup hradla NOR je negácia logického súčtu všetkých vstupov.";
+                generateHint(text, 0.57, 0.21, false, 10, 130, 180);
+                break;
+            case 8:
+                text = "Hradlo XOR je kombinačný logický obvod, ktorého výstup je exkluzívny logický súčet vstupov. Výstup je log.1 len vtedy ak sa hodnoty vstupov líšia. Výstup XNOR je negácia exkluzívneho logického súčtu vstupov.";
+                generateHint(text, 0.57, 0.21, false, 10, 130, 180);
+                break;
+            case 15:
+                text = "Všetky hradlá, s ktorými sme sa zoznamili okrem NOT, môžu mať aj viac ako 2 vstupy.";
+                generateHint(text, 0.57, 0.37, false, 10, 130, 180);
+                break;
+            default:
         }
+
 
         attempts = 0;
         // start counting time
@@ -305,7 +328,7 @@ public class Controller_Level implements Initializable
         AnchorPane.setTopAnchor(element, (heightPane * (percentageFromTop / 100)) - (heightElement / 2));
     }
 
-    private void generateHint(String text, double fromLeft, double fromTop, int handX, int handY, int rotate)
+    private void generateHint(String text, double fromLeft, double fromTop, boolean hand, int handX, int handY, int rotate)
     {
         Pane div = new Pane();
         //main panel with text and button
@@ -331,22 +354,24 @@ public class Controller_Level implements Initializable
         understandTexts.add(understandText);
         GridPane.setHalignment(understandText, HPos.RIGHT);
 
-        try
+        if (hand)
         {
-            //generate pointing hand to div
-            ImageView hand = new ImageView(new Image(new FileInputStream("src/main/res/images/hand.png")));
-            hand.setPreserveRatio(true);
-            hand.setFitWidth(40);
-            hand.setX(handX);
-            hand.setY(handY);
-            hand.setRotate(rotate);
-            div.getChildren().add(hand);
+            try
+            {
+                //generate pointing hand to div
+                ImageView handView = new ImageView(new Image(new FileInputStream("src/main/res/images/hand.png")));
+                handView.setPreserveRatio(true);
+                handView.setFitWidth(40);
+                handView.setX(handX);
+                handView.setY(handY);
+                handView.setRotate(rotate);
+                div.getChildren().add(handView);
+            }
+            catch (FileNotFoundException e)
+            {
+                e.printStackTrace();
+            }
         }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
         playArea.getChildren().add(div);
         hints.add(div);
 
