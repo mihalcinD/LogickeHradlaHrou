@@ -92,6 +92,7 @@ public class Controller_Level implements Initializable
         playArea.getChildren().clear();
         entities.clear();
         cables.clear();
+        hints.clear();
         isInPause = false;
         pauseBtn.setVisible(true);
         checkButton.setVisible(true);
