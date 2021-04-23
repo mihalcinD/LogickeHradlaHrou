@@ -2,7 +2,7 @@
   "levelNmb": 24,
   "level1": {
     "elementNmb": 3,
-    "difficulty": 1,
+    "difficulty": 5,
     "element1": [
       "input",
       "10",
@@ -124,7 +124,7 @@
   },
   "level4": {
     "elementNmb": 9,
-    "difficulty": 1,
+    "difficulty": 2,
     "element1": [
       "input",
       "10",
@@ -192,7 +192,7 @@
   },
   "level5": {
     "elementNmb": 9,
-    "difficulty": 1,
+    "difficulty": 3,
     "element1": [
       "input",
       "10",
@@ -261,7 +261,7 @@
   },
   "level6": {
     "elementNmb": 7,
-    "difficulty": 1,
+    "difficulty": 2,
     "element1": [
       "input",
       "10",
@@ -316,7 +316,7 @@
   },
   "level7":  {
     "elementNmb": 12,
-    "difficulty": 1,
+    "difficulty": 5,
     "element1": [
       "input",
       "10",
@@ -406,7 +406,7 @@
   },
   "level8": {
     "elementNmb": 6,
-    "difficulty": 1,
+    "difficulty": 5,
     "element1": [
       "input",
       "10",
@@ -682,7 +682,7 @@
   },
   "level12": {
     "elementNmb": 15,
-    "difficulty": 1,
+    "difficulty": 2,
     "element1": [
       "input",
       "10",
@@ -794,7 +794,7 @@
   },
   "level13": {
     "elementNmb": 14,
-    "difficulty": 1,
+    "difficulty": 6,
     "element1": [
       "input",
       "10",
@@ -898,7 +898,7 @@
   },
   "level14": {
     "elementNmb": 12,
-    "difficulty": 1,
+    "difficulty": 3,
     "element1": [
       "input",
       "10",
@@ -1112,7 +1112,7 @@
   },
   "level17": {
     "elementNmb": 9,
-    "difficulty": 1,
+    "difficulty": 2,
     "element1": [
       "input",
       "10",
@@ -1180,7 +1180,7 @@
   },
   "level18": {
     "elementNmb": 11,
-    "difficulty": 1,
+    "difficulty": 3,
     "element1": [
       "input",
       "10",
@@ -1262,7 +1262,7 @@
   },
   "level19": {
     "elementNmb": 14,
-    "difficulty": 1,
+    "difficulty": 3,
     "element1": [
       "input",
       "10",

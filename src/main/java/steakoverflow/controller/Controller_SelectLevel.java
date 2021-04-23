@@ -68,7 +68,8 @@ public class Controller_SelectLevel
             int numberOfLevels = Integer.parseInt(jsonObject.get("levelNmb").toString());
             getProgress(numberOfLevels);
 
-            int numberOfRows = (numberOfLevels / 10) + 1;
+            int numberOfRows = (numberOfLevels / 10) + 1; //in 1 row, 10 buttons
+
             //make hbox for each row
             for (int i = 0; i < numberOfRows; i++)
             {
@@ -77,15 +78,18 @@ public class Controller_SelectLevel
                 row.setAlignment(Pos.TOP_LEFT);
                 rows.add(row);
             }
+
             vboxContainer.getChildren().add(rows.get(currentRow));
+
             for (int i = 1; i < numberOfLevels + 1; i++)
             {
                 Pane btnPane = new Pane();
                 Button btn = new Button();
                 btn.setUserData(i + "");
+                //styling btns
                 btn.setText(i + "");
                 btn.getStyleClass().add("levelBtn");
-                btn.getStyleClass().add("btnColor" + colorIndex);
+                btn.getStyleClass().add("btnColor" + colorIndex);//set specific color to each btn from css, each color is 3.3% darker
                 btn.setTextFill(Color.WHITE);
                 btn.setPadding(new Insets(7, 0, 7, 0));
                 btn.setOnAction(event ->
@@ -99,13 +103,14 @@ public class Controller_SelectLevel
                         e.printStackTrace();
                     }
                 });
+                //style checkMark for level passed
                 ImageView checkMark = new ImageView(new Image(new FileInputStream("src/main/res/images/checkmark.png")));
                 checkMark.setPreserveRatio(true);
                 checkMark.setFitWidth(40);
                 checkMark.setX(23);
                 checkMark.setY(17);
                 checkMark.setVisible(false);
-
+                //add checkMark to each btn, but visible only on passed
                 if (progression[i - 1])
                 {
                     checkMark.setVisible(true);
@@ -113,6 +118,7 @@ public class Controller_SelectLevel
                 btnPane.getChildren().add(btn);
                 btnPane.getChildren().add(checkMark);
                 rows.get(currentRow).getChildren().add(btnPane);
+                //reset colorIndex, new row
                 if (i % 10 == 0)
                 {
                     colorIndex = 0;
@@ -133,6 +139,7 @@ public class Controller_SelectLevel
 
     public void getProgress(int numberOfLevels)
     {
+        //get current progress from json
         JSONParser parser = new JSONParser();
 
         try
