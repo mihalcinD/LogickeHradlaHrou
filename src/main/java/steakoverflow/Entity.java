@@ -6,22 +6,23 @@ public class Entity
 {
     private int idEntity;
     private String type;
-    private int tableX;
-    private int tableY;
+    private int x;
+    private int y;
     private boolean value;
     protected ImageView img;
 
-    public Entity(int idEntity, String type, int tableX, int tableY) {
+    public Entity(int idEntity, String type, int x, int y)
+    {
         this.idEntity = idEntity;
         this.type = type;
-        this.tableX = tableX;
-        this.tableY = tableY;
+        this.x = x;
+        this.y = y;
 
         this.img = new ImageView();
         this.img.setPreserveRatio(true);
         this.img.setFitWidth(150);
-        this.img.setX(tableX);
-        this.img.setY(tableY);
+        this.img.setX(x);
+        this.img.setY(y);
 
     }
 
@@ -35,24 +36,24 @@ public class Entity
         this.type = type;
     }
 
-    public int getTableX()
+    public int getX()
     {
-        return tableX;
+        return x;
     }
 
-    public void setTableX(int tableX)
+    public void setX(int x)
     {
-        this.tableX = tableX;
+        this.x = x;
     }
 
-    public int getTableY()
+    public int getY()
     {
-        return tableY;
+        return y;
     }
 
-    public void setTableY(int tableY)
+    public void setY(int y)
     {
-        this.tableY = tableY;
+        this.y = y;
     }
 
     public ImageView getImg() {
@@ -89,8 +90,8 @@ public class Entity
         return "Entity{" +
                 "idEntity=" + idEntity +
                 ", type='" + type + '\'' +
-                ", tableX=" + tableX +
-                ", tableY=" + tableY +
+                ", tableX=" + x +
+                ", tableY=" + y +
                 ", img=" + img +
                 '}';
     }
