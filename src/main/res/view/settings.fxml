@@ -85,6 +85,9 @@
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
+                <Text fill="#9c9c9c" strokeType="OUTSIDE" strokeWidth="0.0"
+                      style="-fx-font-size: 12; -fx-font-weight: bold;"
+                      text="2021 SteakOverflow | Maroš Berdis, Dávid Mihalčin, Matej Koscelník"/>
             </children>
             <BorderPane.margin>
                 <Insets top="40.0"/>
